@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
       - name: Build packages on Ubuntu 18.04 ARM64 image
         run: >
           docker run --rm -v $PWD:/usr/src/ alxgomz/indi-builder:2.1.3
