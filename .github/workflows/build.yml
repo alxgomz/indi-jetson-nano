@@ -1,11 +1,6 @@
 name: INDI package builder for jetson Nano
 on:
   workflow_dispatch:
-    inputs:
-      indi_tag:
-       description: Git Tag of the Indilib version
-       type: str
-       default: 2.1.3
 
 jobs:
   build:
