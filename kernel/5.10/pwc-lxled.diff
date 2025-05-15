@@ -1,0 +1,197 @@
+Seulement dans /usr/src/linux-source-5.10/drivers/media/usb/pwc: Module.symvers
+diff --color -ru pwc5.10/pwc-ctrl.c /usr/src/linux-source-5.10/drivers/media/usb/pwc/pwc-ctrl.c
+--- a/pwc-ctrl.c	2021-09-30 10:11:08.000000000 +0200
++++ b/gpwc-ctrl.c	2021-10-19 00:23:30.367756655 +0200
+@@ -5,6 +5,13 @@
+    (C) 1999-2003 Nemosoft Unv.
+    (C) 2004-2006 Luc Saillard (luc@saillard.org)
+    (C) 2011 Hans de Goede <hdegoede@redhat.com>
++   (C) 2015 <geehalel@gmail.com>                                                                                                                                                                                                               
++                                                                                                                                                                                                                                               
++   NOTE: this version adds V4L2 controls (V4L2_CID_FLASH_STROBE/STROBE_STOP)                                                                                                                                                                   
++   to drive the led present on some cameras. It also synchronously sets the                                                                                                                                                                    
++   video mode when power_save is off. This allows Long Exposure modded cameras                                                                                                                                                                 
++   to capture the frame (normally the video mode is asynchrosnously set in                                                                                                                                                                     
++   the camera when streaming starts, this resets the CCD).
+ 
+    NOTE: this version of pwc is an unofficial (modified) release of pwc & pcwx
+    driver and thus may have bugs that are not present in the original version.
+@@ -326,6 +333,11 @@
+ 	size = pwc_get_size(pdev, width, height);
+ 	PWC_TRACE("decode_size = %d.\n", size);
+ 
++	/* modify send_to_cam if power_save is not set            */
++	/* avoids to reset the video mode when starting streaming */
++	/* and then to loose a long exposure frame                */
++	send_to_cam = send_to_cam || (!pdev->power_save);
++
+ 	if (DEVICE_USE_CODEC1(pdev->type)) {
+ 		ret = set_video_mode_Nala(pdev, size, pixfmt, frames,
+ 					  compression, send_to_cam);
+diff --color -ru pwc5.10/pwc.h /usr/src/linux-source-5.10/drivers/media/usb/pwc/pwc.h
+--- a/pwc.h	2021-09-30 10:11:08.000000000 +0200
++++ b/gpwc.h	2021-10-18 23:18:56.087850387 +0200
+@@ -337,12 +337,15 @@
+ 	};
+ 	/* CODEC3 models have both gain and exposure controlled by autogain */
+ 	struct v4l2_ctrl		*autogain_expo_cluster[3];
++	struct v4l2_ctrl*flash_strobe;
++	struct v4l2_ctrl*flash_strobe_stop;
+ };
+ 
+ /* Global variables */
+ #ifdef CONFIG_USB_PWC_DEBUG
+ extern int pwc_trace;
+ #endif
++extern int flashled;
+ 
+ /** Functions in pwc-misc.c */
+ /* sizes in pixels */
+diff --color -ru pwc5.10/pwc-if.c /usr/src/linux-source-5.10/drivers/media/usb/pwc/pwc-if.c
+--- a/pwc-if.c	2021-09-30 10:11:08.000000000 +0200
++++ b/gpwc-if.c	2021-10-18 23:36:00.860380047 +0200
+@@ -133,6 +133,7 @@
+ #endif
+ static int power_save = -1;
+ static int leds[2] = { 100, 0 };
++int flashled = 0;
+ 
+ /***/
+ 
+@@ -416,8 +417,10 @@
+ retry:
+ 	/* We first try with low compression and then retry with a higher
+ 	   compression setting if there is not enough bandwidth. */
+-	ret = pwc_set_video_mode(pdev, pdev->width, pdev->height, pdev->pixfmt,
++	if (pdev->power_save) {
++		ret = pwc_set_video_mode(pdev, pdev->width, pdev->height, pdev->pixfmt,
+ 				 pdev->vframes, &compression, 1);
++	}
+ 
+ 	/* Get the current alternate interface, adjust packet size */
+ 	intf = usb_ifnum_to_if(udev, 0);
+@@ -718,12 +721,12 @@
+ 		return -ERESTARTSYS;
+ 	/* Turn on camera and set LEDS on */
+ 	pwc_camera_power(pdev, 1);
+-	pwc_set_leds(pdev, leds[0], leds[1]);
++	if (!flashled) pwc_set_leds(pdev, leds[0], leds[1]);
+ 
+ 	r = pwc_isoc_init(pdev);
+ 	if (r) {
+ 		/* If we failed turn camera and LEDS back off */
+-		pwc_set_leds(pdev, 0, 0);
++		if (!flashled) pwc_set_leds(pdev, 0, 0);
+ 		pwc_camera_power(pdev, 0);
+ 		/* And cleanup any queued bufs!! */
+ 		pwc_cleanup_queued_bufs(pdev, VB2_BUF_STATE_QUEUED);
+@@ -739,12 +742,12 @@
+ 
+ 	mutex_lock(&pdev->v4l2_lock);
+ 	if (pdev->udev) {
+-		pwc_set_leds(pdev, 0, 0);
++		if (!flashled) pwc_set_leds(pdev, 0, 0);
+ 		pwc_camera_power(pdev, 0);
+ 		pwc_isoc_cleanup(pdev);
+ 	}
+ 
+-	pwc_cleanup_queued_bufs(pdev, VB2_BUF_STATE_ERROR);
++	pwc_cleanup_queued_bufs(pdev, VB2_BUF_STATE_QUEUED);
+ 	if (pdev->fill_buf)
+ 		vb2_buffer_done(&pdev->fill_buf->vb.vb2_buf,
+ 				VB2_BUF_STATE_ERROR);
+@@ -1215,14 +1218,16 @@
+ #endif
+ module_param(power_save, int, 0644);
+ module_param_array(leds, int, &leds_nargs, 0444);
++module_param(flashled, int, 0444);
+ 
+ #ifdef CONFIG_USB_PWC_DEBUG
+ MODULE_PARM_DESC(trace, "For debugging purposes");
+ #endif
+ MODULE_PARM_DESC(power_save, "Turn power saving for new cameras on or off");
+ MODULE_PARM_DESC(leds, "LED on,off time in milliseconds");
++MODULE_PARM_DESC(flashled, "Add LED control through V4L2_CID_FLASH");
+ 
+-MODULE_DESCRIPTION("Philips & OEM USB webcam driver");
++MODULE_DESCRIPTION("Philips & OEM USB webcam driver (with LED Flash control)");
+ MODULE_AUTHOR("Luc Saillard <luc@saillard.org>");
+ MODULE_LICENSE("GPL");
+ MODULE_ALIAS("pwcx");
+diff --color -ru pwc5.10/pwc-v4l.c /usr/src/linux-source-5.10/drivers/media/usb/pwc/pwc-v4l.c
+--- a/pwc-v4l.c	2021-09-30 10:11:08.000000000 +0200
++++ b/gpwc-v4l.c	2021-10-18 23:31:49.273083568 +0200
+@@ -4,6 +4,13 @@
+    (C) 1999-2004 Nemosoft Unv.
+    (C) 2004-2006 Luc Saillard (luc@saillard.org)
+    (C) 2011 Hans de Goede <hdegoede@redhat.com>
++   (C) 2015 <geehalel@gmail.com>
++
++   NOTE: this version adds V4L2 controls (V4L2_CID_FLASH_STROBE/STROBE_STOP)
++   to drive the led present on some cameras. It also synchronously sets the
++   video mode when power_save is off. This allows Long Exposure modded cameras
++   to capture the frame (normally the video mode is asynchrosnously set in
++   the camera when streaming starts, this resets the CCD).
+ 
+    NOTE: this version of pwc is an unofficial (modified) release of pwc & pcwx
+    driver and thus may have bugs that are not present in the original version.
+@@ -154,7 +161,10 @@
+ 	int r, def;
+ 
+ 	hdl = &pdev->ctrl_handler;
+-	r = v4l2_ctrl_handler_init(hdl, 20);
++	if (flashled)
++		r = v4l2_ctrl_handler_init(hdl, 22);
++	else
++		r = v4l2_ctrl_handler_init(hdl, 20);
+ 	if (r)
+ 		return r;
+ 
+@@ -364,6 +374,13 @@
+ 	cfg.def = def;
+ 	pdev->awb_delay = v4l2_ctrl_new_custom(hdl, &cfg, NULL);
+ 
++	/* Led/Flash Strobe */
++	if (flashled && (pdev->type >= 730)) {
++		pdev->flash_strobe = v4l2_ctrl_new_std(hdl, &pwc_ctrl_ops,
++			V4L2_CID_FLASH_STROBE, 0, 0, 0, 0);
++		pdev->flash_strobe_stop = v4l2_ctrl_new_std(hdl, &pwc_ctrl_ops,
++			V4L2_CID_FLASH_STROBE_STOP, 0, 0, 0, 0);
++	}
+ 	if (!(pdev->features & FEATURE_MOTOR_PANTILT))
+ 		return hdl->error;
+ 
+@@ -466,9 +483,13 @@
+ 			(pixelformat>>8)&255,
+ 			(pixelformat>>16)&255,
+ 			(pixelformat>>24)&255);
+-
++	/* do not alter fps as set_video_mode may not be called */
++	/* before next streaming sequence                       */
++	/*
++	ret = pwc_set_video_mode(pdev, f->fmt.pix.width, f->fmt.pix.height,
++				 pixelformat, 30, &compression, 0);*/
+ 	ret = pwc_set_video_mode(pdev, f->fmt.pix.width, f->fmt.pix.height,
+-				 pixelformat, 30, &compression, 0);
++		pixelformat, pdev->vframes, &compression, 0);
+ 
+ 	PWC_DEBUG_IOCTL("pwc_set_video_mode(), return=%d\n", ret);
+ 
+@@ -858,6 +879,17 @@
+ 		ret = -EINVAL;
+ 	}
+ 
++	if (flashled) {
++		switch (ctrl->id) {
++			case V4L2_CID_FLASH_STROBE:
++				ret = pwc_set_leds(pdev, 25500, 0);
++				break;
++			case V4L2_CID_FLASH_STROBE_STOP:
++				ret = pwc_set_leds(pdev, 0, 25500);
++				break;
++		}
++	}
++
+ 	if (ret)
+ 		PWC_ERROR("s_ctrl %s error %d\n", ctrl->name, ret);
+ 
