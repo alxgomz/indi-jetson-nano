@@ -38,23 +38,24 @@ build_indi() {
     popd
 }
 
-if [ ! -f libxisf_*_${PKG_ARCH}.deb -o ! libxisf-dev_*_${PKG_ARCH}.deb ]; then echo "No XISF package found, building it"
+if [ -z libxisf{,-dev}_*_${PKG_ARCH}.deb ]; then echo "No XISF package found, building it"
     build_xisf
 fi
 dpkg -i libxisf{,-dev}_*_${PKG_ARCH}.deb
 
-if [ ! -f indi-bin_${INDI_VERSION#v*}_${PKG_ARCH}.deb ]; then echo "No indi package found, building it"
+if [ ! -f libindi-dev_${INDI_VERSION#v*}_${PKG_ARCH}.deb ]; then echo "Missing indi development package, rebuilding"
     build_indi
 fi
-echo -e "\n########## Installing INDI dev package" #########\#"
+echo -e "\n########## Installing INDI packages" ##########"
 dpkg -i libindi-dev_${INDI_VERSION#v*}_${PKG_ARCH}.deb \
     libindi1_${INDI_VERSION#v*}_${PKG_ARCH}.deb \
     libindi-data_${INDI_VERSION#v*}_all.deb \
     indi-bin_${INDI_VERSION#v*}_${PKG_ARCH}.deb
 
-INDI_3RD_PARTY_DRIVERS="libplayerone libpktriggercord indi-playerone indi-pentax libqhy indi-qhy"
+INDI_3RD_PARTY_DRIVERS="libplayerone libpktriggercord indi-playerone indi-pentax"
 
 pushd indi-3rdparty
+chmod +x debian/*/rules
 for p in $(echo $INDI_3RD_PARTY_DRIVERS); do echo -e "\n######### Compiling $p package #########\n"
     [ -d deb_$p ] || ./make_deb_pkgs $p
     if [[ "$p" =~ ^lib ]]; then echo "Installing compiled library $p as it may be required by subsequent packages"
