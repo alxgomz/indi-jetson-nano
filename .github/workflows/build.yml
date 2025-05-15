@@ -29,5 +29,5 @@ jobs:
           file: "*.deb"
           file_target_version: bionic
           private_key: ${{ secrets.APT_PRIV_KEY }}
-          public_key: ${{ steps.apt_pub_key.outputs.pem }}
+          public_key: apt.pubkey
           key_passphrase: ${{ secrets.APT_KEY_PASSPHRASE }}
