@@ -2,6 +2,9 @@ name: INDI package builder for jetson Nano
 on:
   workflow_dispatch:
 
+env:
+  APT_PUBKEY_PATH: indi-jetson-nano-keyring.asc
+
 jobs:
   build:
     runs-on: ubuntu-24.04-arm
@@ -18,7 +21,7 @@ jobs:
         id: apt_pub_key
         run: |
           echo 'pem<<EOT' >> $GITHUB_OUTPUT
-          cat apt.pubkey >> $GITHUB_OUTPUT
+          cat "$APT_PUBKEY_PATH" >> $GITHUB_OUTPUT
           echo EOT >> $GITHUB_OUTPUT
 
       - uses: smeinecke/apt-repo-action@v2.1.6
@@ -29,6 +32,6 @@ jobs:
           file: "*.deb"
           file_target_version: bionic
           private_key: ${{ secrets.APT_PRIV_KEY }}
-          public_key: indi-jetson-nano-keyring.asc
+          public_key: ${{ steps.apt_pub_key.outputs.pem }}
           key_passphrase: ${{ secrets.APT_KEY_PASSPHRASE }}
           page_branch: debs
