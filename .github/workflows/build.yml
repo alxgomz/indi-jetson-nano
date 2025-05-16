@@ -29,5 +29,5 @@ jobs:
           file: "*.deb"
           file_target_version: bionic
           private_key: ${{ secrets.APT_PRIV_KEY }}
-          public_key: apt.pubkey
+          public_key: indi-jetson-nano-keyring.asc
           key_passphrase: ${{ secrets.APT_KEY_PASSPHRASE }}
