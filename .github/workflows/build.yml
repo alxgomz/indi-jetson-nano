@@ -21,7 +21,7 @@ jobs:
           cat apt.pubkey >> $GITHUB_OUTPUT
           echo EOT >> $GITHUB_OUTPUT
 
-      - uses: smeinecke/apt-repo-action@v2.1.4
+      - uses: smeinecke/apt-repo-action@v2.1.6
         with:
           github_token: ${{ github.token }}
           repo_supported_arch: arm64
@@ -31,3 +31,4 @@ jobs:
           private_key: ${{ secrets.APT_PRIV_KEY }}
           public_key: indi-jetson-nano-keyring.asc
           key_passphrase: ${{ secrets.APT_KEY_PASSPHRASE }}
+          page_branch: debs
