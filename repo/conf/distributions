@@ -1,0 +1,7 @@
+Description: alxgomz/indi-jetson-nano
+Codename: bionic
+Architectures: arm64
+Components: main
+SignWith: FD3BE5CC18B58A72D920217DF5139EE566374A6B
+
+

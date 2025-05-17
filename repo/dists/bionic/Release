@@ -1,0 +1,17 @@
+Codename: bionic
+Date: Sat, 17 May 2025 19:45:13 UTC
+Architectures: arm64
+Components: main
+Description: alxgomz/indi-jetson-nano
+MD5Sum:
+ 7d19a63019c704540764c13f92f8cb3a 14963 main/binary-arm64/Packages
+ 8a7713382a593dfb261426361cd37651 6517 main/binary-arm64/Packages.gz
+ 8b6273e0149e4efb6633bb000ce82309 74 main/binary-arm64/Release
+SHA1:
+ f8d5d5c219aed4cc666dc66da68f938154646db1 14963 main/binary-arm64/Packages
+ 4a3652d99f90bc2481347c95f8aabd81e696464b 6517 main/binary-arm64/Packages.gz
+ 2075ec648c5613edb53b9b5b2ee81dc32ac5d67c 74 main/binary-arm64/Release
+SHA256:
+ 3c88efc9ca1c515532d82928fc74b36151180e7de9575983b9e297ce3b6939bd 14963 main/binary-arm64/Packages
+ b553f35cf7e62b35bf690f5c7679bfa59a3cd0db2debbd432afc0c9a69604eb9 6517 main/binary-arm64/Packages.gz
+ 2d9280dc69facccfa3cb4afdd2ff343823654aa30c3f80caef8624c68ab0927e 74 main/binary-arm64/Release
