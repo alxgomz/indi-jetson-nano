@@ -5,6 +5,10 @@ on:
 env:
   APT_PUBKEY_PATH: indi-jetson-nano-keyring.asc
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   build:
     runs-on: ubuntu-24.04-arm
