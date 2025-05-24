@@ -1,38 +1,16 @@
 diff --git a/drivers/video/v4l2driver.cpp b/drivers/video/v4l2driver.cpp
-index cf5fe6b50..e670c6ffd 100644
+index cf5fe6b50..b1b96f820 100644
 --- a/drivers/video/v4l2driver.cpp
 +++ b/drivers/video/v4l2driver.cpp
-@@ -946,6 +946,14 @@ bool V4L2_Driver::StartExposure(float duration)
- 
- bool V4L2_Driver::setShutter(double duration)
- {
-+    exposure_duration.tv_sec  = (long) duration;
-+    exposure_duration.tv_usec = (long) ((duration - (double) exposure_duration.tv_sec) * 1000000.0f);
-+
-+    elapsed_exposure.tv_sec = 0;
-+    elapsed_exposure.tv_usec = 0;
-+
-+    gettimeofday(&capture_start, nullptr);
-+
-     if (lx->isEnabled())
-     {
+@@ -951,6 +951,7 @@ bool V4L2_Driver::setShutter(double duration)
          LOGF_INFO("Using long exposure mode for %.3f sec frame.", duration);
-@@ -963,14 +971,6 @@ bool V4L2_Driver::setShutter(double duration)
-     }
-     else if (setManualExposure(duration))
-     {
--        exposure_duration.tv_sec  = (long) duration;
--        exposure_duration.tv_usec = (long) ((duration - (double) exposure_duration.tv_sec) * 1000000.0f);
--
--        elapsed_exposure.tv_sec = 0;
--        elapsed_exposure.tv_usec = 0;
--
--        gettimeofday(&capture_start, nullptr);
--
-         frameCount    = 0;
-         subframeCount = 0;
- 
-@@ -992,6 +992,11 @@ bool V4L2_Driver::isIOptron()
+         if (startlongexposure(duration))
+         {
++            gettimeofday(&capture_start, nullptr);
+             LOGF_INFO("Started %.3f-second long exposure.", duration);
+             return true;
+         }
+@@ -992,6 +993,11 @@ bool V4L2_Driver::isIOptron()
      return strstr(getDeviceName(), "iGuider") || strstr(getDeviceName(), "iPolar");
  }
  
@@ -44,7 +22,7 @@ index cf5fe6b50..e670c6ffd 100644
  bool V4L2_Driver::setManualExposure(double duration)
  {
      /* N.B. Check how this differs from one camera to another. This is just a proof of concept for now */
-@@ -1537,7 +1542,7 @@ void V4L2_Driver::newFrame()
+@@ -1537,7 +1543,7 @@ void V4L2_Driver::newFrame()
          return;
      }
  
