@@ -1,0 +1,292 @@
+Package: indi-bin
+Source: libindi
+Version: 2.1.3
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 16293
+Depends: libc6 (>= 2.27), libcfitsio5 (>= 3.390~), libcurl3-gnutls (>= 7.16.2), libev4 (>= 1:4.04), libgcc1 (>= 1:3.0), libindi1, libnova-0.16-0, librtlsdr0, libstdc++6 (>= 7), libusb-1.0-0 (>= 2:1.0.9), zlib1g (>= 1:1.1.4), libindi-data (>= 2.1.3)
+Conflicts: indi-astrolink4, indi-astromechfoc, indi-dreamfocuser, indi-spectracyber
+Replaces: indi-astrolink4, indi-astromechfoc, indi-dreamfocuser, indi-spectracyber
+Homepage: http://www.indilib.org/
+Priority: optional
+Section: misc
+Filename: pool/main/libi/libindi/indi-bin_2.1.3_arm64.deb
+Size: 2311976
+SHA256: 0410c3f15c7697c74fbf9420ccb607b770263e7bccce5cf61364a128cbcc8a54
+SHA1: f3e3adeec204d7df88add26248ec73f0efe9de76
+MD5sum: 713fd4425ee9c2048189129e959057b2
+Description: INDI server, drivers and tools
+ INDI (Instrument-Neutral Device Interface) is a distributed XML-based
+ control protocol designed to operate astronomical instrumentation.
+ INDI is small, flexible, easy to parse, scalable, and stateless.
+ It supports common DCS functions such as remote control, data acquisition,
+ monitoring, and a lot more.
+ .
+ This package contains the INDI server, the drivers for the supported
+ astronomical instrumentation, and other INDI tools.
+
+Package: indi-dbg
+Source: libindi
+Version: 2.1.3
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 89260
+Depends: libindi1 (= 2.1.3)
+Suggests: indi-bin (= 2.1.3)
+Conflicts: indi-astrolink4-dbg, indi-astromechfoc-dbg, indi-dreamfocuser-dbg, indi-spectracyber-dbg
+Replaces: indi-astrolink4-dbg, indi-astromechfoc-dbg, indi-dreamfocuser-dbg, indi-spectracyber-dbg
+Homepage: http://www.indilib.org/
+Priority: extra
+Section: debug
+Filename: pool/main/libi/libindi/indi-dbg_2.1.3_arm64.deb
+Size: 84380204
+SHA256: 0dd9e5aeb6360dab3dd1e5922e34ce10b85660ea78ca29150a5770380564725c
+SHA1: 9da6e9f1e44be7d84cb1189664e024da4feb3f1a
+MD5sum: 5c4e37c39e0ad9a027ff05f66ef9acda
+Description: Instrument-Neutral Device Interface library -- debug symbols
+ INDI (Instrument-Neutral Device Interface) is a distributed XML-based
+ control protocol designed to operate astronomical instrumentation.
+ INDI is small, flexible, easy to parse, scalable, and stateless.
+ It supports common DCS functions such as remote control, data acquisition,
+ monitoring, and a lot more.
+ .
+ This package contains the debug symbols for the INDI library and all the
+ utilities, useful to investigate problems in INDI.
+Build-Ids: 1248fe7805f0e3e8e6cd755fdfe3ccfc8662b055 3848e46ac83d1bea4f511b452acba0918fce43d0 4c5d18ae6cba7f84152cae55b61ca4e8dbbf5aff 70a949ae7f760d25974674dde80c976c2dc44bfd 73aa6d724b6477fb09b05e2a8074c21a6b692161 ba5897234ab9a956e3e4bfc1b36fa7bdf0765caf 0022d17d68196024a7199887deb201d51c1b4d6b 007f1f7c34a1f9ead19d006faa5d077dfccd7880 0240a9b7a8be808d2acb297184d2d7600c1f7b4a 02e04fae9583ff9dedea088543f121d000d3af24 038ddc4000f8b3a5529b6f13f20249bbba2655b0 0399da3b07b1dbe2f5d00dd85cf87def73a989e8 04a2d2158faaa0a93de089d1514e7f636ba88e8e 07cbd219a75101116c68d2d982b6f740b46f3009 0863f74f8676ee8a639f1402b9a1bfdcb326b9cf 0c02b2a8aabc0adc796c48227e95589006ec756d 0c4bf16ea92702f9f4b9c5954163af7f4efe36ac 14d1ba7a9bcdf140e4e81146850f4862987ecf7d 158af48becaa5704c4328e2b62def4ccb5101b67 169d3920d46297f8c98c076113f4d956cca73b5c 16fa7fd450bfa3e5e3b8803d88b870716cd0b39f 1796778e18d1d656513dfd23104835ec912390c7 184041cecbfbd3808778113297948601ccbcf0d7 1b5d5927be3a2bfdafe39ee60c2f23432b61192b 1be4aa401da76718988c1af5936a9639448ffea0 1deb67fe45048d6960b0def64e547298f5199575 1e30092f2e2ee1aefce667230e69438ced8c30b1 21ba5fac8da3251b9d98ac75c265b8c44274d97a 221565e459416a9a2d0a4440c2dc824f4bcaf33f 22523d197252785126d44c444d1a47f1df6649b9 238e260ea807c865bda24760498677aac9b8a902 23fdaaecd74e5a8955f7dffbd125f0e63cacac74 2480172cf9f740ed6132ddbce757edb6ee21665b 25b9fac801b36584aec1055de3fe5417fe711150 2776844bffbb7ce33b3c3605310558590f790828 2874fb831a2dc727ee9756c31e4821fd4965e279 291f68ca0dc44dd113e223e14445904e12484e5f 2abf09b0a2a0ade217f3a03f2328976cee0e38be 2bb10cb0db674fa9adbed7d5bcfc1f4a7b93d089 2cdf64153c9ec6a5c67e6138f09c4d7e1b3b9850 2ec412d68d017db7f269f24cfc0e31e4920a11dd 301379afce7f0c1cecbfb9b7134f4fb3820a5081 322aaae8525266722da4141c89ebc943242402cc 32aaec21fe4671c872d470ac2df437227a7499b1 36ba929b70c182d849fd149a1d12bb9f3e583217 37e04200ff3d83e286240f4202667070981323e6 3c6e1be9d2250b2454e314efef9a6f01a13fc133 4002d340802524dc67003e50f620c67dbbf12834 421a80bb95b08423c830aa4185d65de3ba094b57 4243a1591693d0b4f6fa35a491fca5f892e9b830 42fb8998cd1d7f58e2e78e419985753532e230a7 469f061a8255b12d399019bb85afdbe2952eb254 478df9d3f95613a68d5ec575cd970687d0ea5322 47957c25bae9296a2c37e4ea4fe0e7c7f9c15a96 4a9f4f145a85295c65b3c460ac0d817cf339beea 4b19ac96ebc3e814eb152341b09b4adbf0b51f07 4bcb96d05c7ed638536729fbeecfe084b816778b 4d05cd2d7d68746b82cd974f3440c8a238a481b0 4e3c59fe9a95f00ed7f7a388d9e71f962b3b854d 4fea796b733b374aa5e85ba1539eb2a07a8347c3 574e40414caf244c29e0de9f71da01553da56c5f 57559332cd6f426f752c25b1b9e3c98a81ae0d76 593d0b0b1376230c2270b56674f78243759c10fd 5ad1132c9bea3fad1a57016901180255bbbef624 5c17748f956b8dce3ce50b1ce24775e7c43dfb78 621e3199657dd4ac161ae0d4e166e354d2d3aaea 63006a81edb9a78e739db54e3863cc6fb49c199d 649ebad2c721c0946fa8143f54952a683251f5ce 68dfcab2bd7f77ee9cd5ad0b43708d23c04679ac 6a569937daa8d4a5a6d245a9a7daa139f2d5a180 6c68c19276b667538d4ba3ee9c97320a1dbdde03 6eccfcb28a35ece566795a56e932b9b0812fb591 6f07f6a9805e277f29c142bf2e5f9a6aa3334277 7021bfcb7b50fe1b4ce60ceb78d3f6f56c9c8e8f 702df28474f09e4af28a8eaf3b74a6bd10c90b80 70db7965a2a7433810397b06c9c6d5f53703af4e 72353a7efa2227fcfde178e12df11dcc11ec96b6 74547a92254593c5b7d3257f7a6bc354d04b60c0 767fe5325ec6f9d9daedbde965e0186c7d8a9ee5 77c1bbc1c4765de3c658fea681db8e9991c52511 7862a5de78513b8136428d0e66db41867c575d79 79e15a5efba5b347f85cba4d9d1dc22438a64862 7a28462139cd47a5ecbbe6664580e33f9690af86 7f9bdaebc9d239349b79c72c6ba34d1e82023141 7fa79b8c2f3ddd86552744fef0c7044237f4b0d1 80525381dcfa906ec0af0e101924f2f8a55532e7 81620a738901f4b53eeb0a9616e9564845f30bdd 829b1c8b027ac2b0da5528b6e1cde96d9374e984 840fe6a705cca0abb9f6a9292c6a56cd7be8774a 84de4c044b89d1849a137fa5070e9acaa6e1bbcb 856185d2ff741c5e3932ce19ffc437750a23fa49 85739e5fdbab4267d2aa2eaf1316cbf5c96c56d6 879576ee91a04c6d9c964d3938e2317b5d4aac04 8831dde47363f233a3697984e6690b786608deb8 8b2b032e5abed2591f592a55aaec17b7a8cea249 8c5f0d1798d54bf04263b765da4c804d9fa05efb 8d0aa7c28564d20ec0a84c6ca2dc22143ad849e7 8e0af3eba4c1896980f35f64e36c41db6229b5bc 8fd5d4527e9ed4808706fefa4bef11694ef4a20f 906de9cf9cb55493c8421d765ee7ab610baf0e57 9188701e6de8e3b654e480226100eb9abe4275f0 93fc6c42bcd25473c1260e530df024a405e0be83 958b2fe89de69eff05dc56cc6557ce25514acf68 95ba75d9e9b22ec37809dfa5c8ba333ed14d6959 95c27da95f20fd136cd2ad1d8ab3967e7cbbcfa6 95cecfa7f499ccd70929a6edfb8bfd8d630cff46 9646e444bcd2849d70d0bd8217162f9a56f36eed 96872cb46bb5477c6e08a942d4cb4927a11fc755 9de9aa6bdf1d948297d80d3decd0efd948805734 9f91d645d651bdfd8b59d852bd9d9b4bf4ca18ec a7c2254f7ca1378faf8e392b60573c1460c2ddee aa764afc0c4770cca6be502a1730017a33011c53 aad44727ff55c158358d25d7f92c354765ae750c ae196a5fc23d394a972405b29d88745e96be2c22 b0c291b4efac29c507b386cf48212bdeb3fffcf6 b1343a6fa77ac7d01da710f95fd4439c522d01a3 b25bbae38af61250f8d94d1a7222ccaf8250b4ec b33063b430879976dc8460008da81e92994f811f b3ea65dbae157d87804cd8230ef89e4bb7631569 b522d52f7b243c6775e4c9c8f4b422c3fdddbfff b641bf8e6e9d0ee001029ae14c4e3082679cc4fb b672ae8d2d2a4fb8fe55903813a136fba90d4b4b b797f0c4568f0fc2197b7e3df755e9c910c245cb b85d41daed1ed47791fe0d98604466551b676596 b969f0dee3fe6ea8a2eb20819399946c5fd475f6 bad345334b407639b9fb40e4e1edd8c19bc34f56 bcc11d51b4a54591f992f886524da8e251fa5365 bf4b83cbc8de44c8cfc64cedc42a96648f1e41c9 c02f4a703375c9179b2e07322b4cf4448031a73a c0f13f385c948b71cd4553d7b48db35ee0528d4e c2d9909c7a7805d1de05c5fc5d2e48e4df4345c0 c3fdfbdb16baf282e4c81a70887d13af75867c16 c44187ac933397807936e0169a911e45fc90587e c45f2ecbac0c14ac3ffc0d01d66ccfda24c76ab4 c511dab04dbc2e43d9fe3793c7e4e598f0616c8b c560dedbb9688ab912ca1b283976676b68b76703 c6b9be4af27f61bb1900a1efa28e00bb3db8044f c91bafb636d08c7194291353096e117b6eb83d36 cbf31192d8126e6682e59c56b26385e9ab244454 cd2b4103846263f12f4094ab2b6394c72ed7fd8c cfa1ce4744c146115f9d9d59ad705e6e821ef891 d3ad3975f78abe4e7ec216b137589b553d76d4e0 d7f739337f45f2d88ff4236cf4dedc6a796c2410 d887be30b55b60f7a0eef88a653a415690f943f6 dc937bca7579878740c0aeb61a7511b582e19b77 de8843b9da9165e24f9c2e66da51a013ffc6ddee df4997e4587554b79af812d57638be27cdb64ea8 df8264cb4b39373fa03c55e21b4713a179ce7a52 e02b4ee3193cae8d833e5513bc90cf0a73e15835 e1fe84f8c7a38631f762b66884be812fbd420134 e206153f5e513343f343fd0a802d0e38e805eb86 e4075f2a88928253ab80f85b503c3ef132dc6495 e7183309d0a26c8ba828c55bcf46f33a3c487f74 e71f42054153e3092b6ede28501b410dbf921f6c eb9f9064b211efcc2e51b57be2700e19192cf4f2 ec0cf8bf929f5e283d6a3c6f394178ab23ba0118 ec2457070b08e4f2f98d62e08a19e0aa56cc2beb ec474194bb34da77b6ff0668adbcb56ccd4f666c ee7ab79ca166b2ef5f85bb3c162ed37799ae5153 ef6e3fe5507b523a2c7bb9b244d2712eb8749f87 ef8b846f106496b95bf14790f7a62a1b7919a833 efc58e1a5b6d6b9bda8f721c27810283e4a901d6 f0256ff49ea38fe4b603c0087e701c33fdf55c66 f2f4a7cd16e589f3583c7d1af8c99caf9abf664d f31f65b143adc98cf4359a567dfe30c5ce1a7326 f3f039a7e29395b64aae30564d4173f7fce188f8 f52e2f3f379378b83e0cc1c00ee4b55cfbc70161 f807fad610c42503b057a8bf05c107ef465fb8ee f969f6f14d7eadd6de6dc1ffd82da8914e6ef18f fd180c145f532658e176c1fb6c99d8cfcb0e971a fd4c6f7a8bf1a849f27be4c6066c2add56f09aa8 fe0d5c2a37d5d434b48c9c20c4fe4be0cba3bd4d fff5bf5d91c222b2740f39abccfd3c51776e59a9
+
+Package: indi-pentax
+Version: 1.1
+Architecture: arm64
+Maintainer: Karl Rees <indidev@karlrees.com>
+Installed-Size: 241
+Depends: libc6 (>= 2.17), libcfitsio5 (>= 3.390~), libgcc1 (>= 1:3.0), libindi1, libjpeg8 (>= 8c), libpktriggercord, libraw16 (>= 0.16.0), libstdc++6 (>= 7)
+Priority: extra
+Section: science
+Filename: pool/main/i/indi-pentax/indi-pentax_1.1_arm64.deb
+Size: 69492
+SHA256: a11b27291dc57f0cdd95e750a04690b6fd00bfae64aabd9245b80753ab296e65
+SHA1: 8e35972a272366dfe95c2e9b06fb9933e3ab823a
+MD5sum: 852f4a13c067582cac258471fc5a6b1a
+Description: INDI Pentax driver.
+ Driver for Pentax DSLR cameras.
+ .
+ This driver is compatible with any INDI client such as KStars or Xephem.
+
+Package: indi-pentax-dbg
+Source: indi-pentax
+Version: 1.1
+Architecture: arm64
+Maintainer: Karl Rees <indidev@karlrees.com>
+Installed-Size: 992
+Depends: indi-pentax (= 1.1)
+Priority: extra
+Section: debug
+Filename: pool/main/i/indi-pentax/indi-pentax-dbg_1.1_arm64.deb
+Size: 931824
+SHA256: e793608b0323d7401dbf0da0cff3dbe9af4b93bb23cc769d047dc9a0a745985f
+SHA1: cbdc44e8b95cee205bfdb28b582efe928ee3914a
+MD5sum: ec19d3017c768dd55285a8ce21db4e0f
+Description: INDI Pentax driver.
+ Driver for Pentax DSLR cameras.
+ .
+ This driver is compatible with any INDI client such as KStars or Xephem.
+ This package contains the debug symbols for the this driver, useful to investigate problems in INDI.
+Build-Ids: 8589f6f99c0a976f6d3ce1d0f4976f637df4d65c
+
+Package: indi-playerone
+Version: 1.19
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 264
+Depends: libc6 (>= 2.17), libgcc1 (>= 1:3.0), libindi1, libplayerone, libstdc++6 (>= 5.2)
+Priority: extra
+Section: science
+Filename: pool/main/i/indi-playerone/indi-playerone_1.19_arm64.deb
+Size: 57016
+SHA256: c3c098cadad9597fd741b47671a2622e83b043e1720256141e7f7313d36093c9
+SHA1: 591b442c79e50160e16ae5e795bf3f8fcf25f125
+MD5sum: 83b75c07fd1ab948c4fa67b10fd68e5b
+Description: INDI Driver for Playerone based cameras
+ Driver for Playerone based cameras.
+ .
+ This driver is compatible with any INDI client such as KStars or Xephem.
+
+Package: indi-playerone-dbg
+Source: indi-playerone
+Version: 1.19
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 972
+Depends: indi-playerone (= 1.19)
+Priority: extra
+Section: debug
+Filename: pool/main/i/indi-playerone/indi-playerone-dbg_1.19_arm64.deb
+Size: 886924
+SHA256: 134759af4fd450c535705226bd4306b1344f93e1083ab24a4484b356baccbf55
+SHA1: f58075e0fa645a71bd86ff0d20cbce2db32e2435
+MD5sum: ec4e781384a602f4fa13667211fd2499
+Description: INDI Driver for Playerone based cameras
+ Driver for Playerone based cameras.
+ .
+ This driver is compatible with any INDI client such as KStars or Xephem.
+ This package contains the debug symbols for the this driver, useful to investigate problems in INDI.
+Build-Ids: 383db425bc7416d72b27fb2eb684996617850d61 648277b26eeff295e7cef06c000301649c45256d ac115b38d501a462a1f5aa3551de6ae1a22498a2 cf07ba0c43dc6c425a004feeaf1812f3399da5f9
+
+Package: libindi-data
+Source: libindi
+Version: 2.1.3
+Architecture: all
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 69
+Multi-Arch: foreign
+Homepage: http://www.indilib.org/
+Priority: optional
+Section: misc
+Filename: pool/main/libi/libindi/libindi-data_2.1.3_all.deb
+Size: 12220
+SHA256: 93824119c4235373f7b27ed5f75525a7299b77d0bf885f086f59307ace5d0ee4
+SHA1: a20f8b9fcb85e8f051624a2cf3aaa4baae4b4da3
+MD5sum: 7a0ebb39842666294de0e8faa376fde2
+Description: Instrument-Neutral Device Interface library -- shared data
+ INDI (Instrument-Neutral Device Interface) is a distributed XML-based
+ control protocol designed to operate astronomical instrumentation.
+ INDI is small, flexible, easy to parse, scalable, and stateless.
+ It supports common DCS functions such as remote control, data acquisition,
+ monitoring, and a lot more.
+ .
+ This package contains the data files for the INDI library.
+
+Package: libindi-dev
+Source: libindi
+Version: 2.1.3
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 9398
+Depends: libindi1 (= 2.1.3), libusb-1.0-0-dev
+Homepage: http://www.indilib.org/
+Priority: optional
+Section: libdevel
+Filename: pool/main/libi/libindi/libindi-dev_2.1.3_arm64.deb
+Size: 922416
+SHA256: f5a31eb0b8ae713744e7c83415046134b89aaa9bdcf7f47a95e21c531c44c144
+SHA1: 6926a27bdbee4d0d010bfde1ce08bb9bd0227f07
+MD5sum: e19a10a1855c9223d56ef8959c79081a
+Description: Instrument-Neutral Device Interface library -- development files
+ INDI (Instrument-Neutral Device Interface) is a distributed XML-based
+ control protocol designed to operate astronomical instrumentation.
+ INDI is small, flexible, easy to parse, scalable, and stateless.
+ It supports common DCS functions such as remote control, data acquisition,
+ monitoring, and a lot more.
+ .
+ This package contains development headers and libraries for the INDI library.
+
+Package: libindi1
+Source: libindi
+Version: 2.1.3
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 3096
+Depends: libc6 (>= 2.27), libcfitsio5 (>= 3.390~), libcurl3-gnutls (>= 7.16.2), libfftw3-double3 (>= 3.3.5), libgcc1 (>= 1:3.0), libgsl23, libgslcblas0, libjpeg8 (>= 8c), libnova-0.16-0, libogg0 (>= 1.0rc3), libstdc++6 (>= 6), libtheora0 (>= 1.0), libusb-1.0-0 (>= 2:1.0.9), libxisf, zlib1g (>= 1:1.1.4), libindi-data (>= 2.1.3), indi-bin (>= 2.1.3)
+Conflicts: libindi-plugins, libindi0, libindialignmentdriver1, libindidriver1
+Replaces: libindi-plugins, libindi0, libindialignmentdriver1, libindidriver1
+Multi-Arch: same
+Homepage: http://www.indilib.org/
+Priority: optional
+Section: libs
+Filename: pool/main/libi/libindi/libindi1_2.1.3_arm64.deb
+Size: 648908
+SHA256: 427713293b12cadc7f936d0ef1bcdd24df19ce7f3c353207877ff6b176435eb0
+SHA1: 2b13907ac2a9d4b210065288456a1d6818df246d
+MD5sum: f37dbd63235b722dd5cc7cb47125d38d
+Description: Instrument-Neutral Device Interface library -- shared library
+ INDI (Instrument-Neutral Device Interface) is a distributed XML-based
+ control protocol designed to operate astronomical instrumentation.
+ INDI is small, flexible, easy to parse, scalable, and stateless.
+ It supports common DCS functions such as remote control, data acquisition,
+ monitoring, and a lot more.
+ .
+ This package contains the shared library.
+
+Package: libpktriggercord
+Version: 0.85.02
+Architecture: arm64
+Maintainer: Karl Rees <indidev@karlrees.com>
+Installed-Size: 230
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libp/libpktriggercord/libpktriggercord_0.85.02_arm64.deb
+Size: 46428
+SHA256: c8346d36a53db92ed476ff54d02ced8a8e9383363d10e1cf5ca61773a4819915
+SHA1: 3a2db4f7730843684fb525b3cd023cb0b19aeaf0
+MD5sum: 8bff38b63917ec7fa75850f8220a4e6e
+Description: Library for Pentax cameras in MSC mode.
+ Uses pktrigercord - see http://pktriggercord.melda.info/.
+
+Package: libplayerone
+Version: 1.15
+Architecture: arm64
+Maintainer: Hiroshi SAITO <hiro3110g@gmail.com>
+Installed-Size: 601
+Depends: libc6 (>= 2.27), libgcc1 (>= 1:3.0), libstdc++6 (>= 6), libudev1 (>= 183), libusb-1.0-0 (>= 2:1.0.16)
+Priority: extra
+Section: libs
+Filename: pool/main/libp/libplayerone/libplayerone_1.15_arm64.deb
+Size: 157408
+SHA256: 6e41cec88e20fab63a9e54d786eb2c8061e1b3b4d4c1694b839c70e6e4309c9a
+SHA1: 30a7de64ee3ed460538a513f03f147f51b2f7ee5
+MD5sum: bdadcb4caa28bb819bd62b0fb6129467
+Description: Library for Player One Astronomy's Cameras
+
+Package: libxisf
+Version: 0.2.12-ubuntu1
+Architecture: arm64
+Maintainer: Dušan Poizl <nou@nouspiro.space>
+Installed-Size: 724
+Depends: libc6 (>= 2.17), libgcc1 (>= 1:4.2), libstdc++6 (>= 5.2)
+Conflicts: libxisf0
+Multi-Arch: same
+Homepage: https://gitea.nouspiro.space/nou/libXISF
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxisf/libxisf_0.2.12-ubuntu1_arm64.deb
+Size: 239168
+SHA256: 55371a85ee26e62486ad4ccb07851a1e22949bde8edd4df0ef0f2a07fa2f326c
+SHA1: 912f14e4111886d5389fff2476a46106576c09da
+MD5sum: 72c8b8d91af164ea4e0d8e579d8e98ce
+Description: Library to load and save XISF images
+ XISF is native format of PixInsight astroprocessing suite.
+ Extensible Image Serialization Format (XISF) is the native file format
+ of PixInsight. It is a free, open format for storage, management and
+ interchange of digital images and associated data.
+ .
+ This C++ library implements XISF specification 1.0 which can be found at
+ https://pixinsight.com/doc/docs/XISF-1.0-spec/XISF-1.0-spec.html
+
+Package: libxisf-dev
+Source: libxisf
+Version: 0.2.12-ubuntu1
+Architecture: arm64
+Maintainer: Dušan Poizl <nou@nouspiro.space>
+Installed-Size: 32
+Depends: libxisf (= 0.2.12-ubuntu1)
+Multi-Arch: same
+Homepage: https://gitea.nouspiro.space/nou/libXISF
+Priority: optional
+Section: libdevel
+Filename: pool/main/libx/libxisf/libxisf-dev_0.2.12-ubuntu1_arm64.deb
+Size: 7596
+SHA256: aaa044e53df49385b97062c5592e1a35cc51fa4bcb99dc296bcf1d1e8693c63f
+SHA1: 7ae9050c49d418fc0cc8ca6e2041a38cc26ab134
+MD5sum: 3d5b5b2b893159a5a565870bfca04661
+Description: Library to load and save XISF images development files
+ This package contain development files.
+ .
+ XISF is native format of PixInsight astroprocessing suite.
+ Extensible Image Serialization Format (XISF) is the native file format
+ of PixInsight. It is a free, open format for storage, management and
+ interchange of digital images and associated data.
+ .
+ This C++ library implements XISF specification 1.0 which can be found at
+ https://pixinsight.com/doc/docs/XISF-1.0-spec/XISF-1.0-spec.html
+
