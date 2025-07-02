@@ -36,7 +36,13 @@ RUN apt-get -y install dpkg-dev \
         libdc1394-22-dev \
         libboost-regex-dev \
         libcurl4-gnutls-dev \
-        libtheora-dev
+        libtheora-dev \
+        libwxgtk3.0-dev \
+        wx3.0-i18n \
+        libopencv-dev \
+        libeigen3-dev \
+        libgtest-dev \
+        libx11-dev
 
 ADD entrypoint.sh /usr/local/bin/entrypoint.sh
 
