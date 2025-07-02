@@ -1,11 +1,11 @@
 [submodule "indi"]
 	path = indi
 	url = https://github.com/indilib/indi.git
-	branch = v2.1.4-3
+	branch = v2.1.4
 [submodule "indi-3rdparty"]
 	path = indi-3rdparty
 	url = https://github.com/indilib/indi-3rdparty
-	branch = v2.1.4-3
+	branch = v2.1.4
 [submodule "libXISF"]
 	path = libXISF
 	url = https://gitea.nouspiro.space/nou/libXISF.git
