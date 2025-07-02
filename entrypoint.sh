@@ -72,6 +72,7 @@ for p in $(echo $INDI_3RD_PARTY_DRIVERS); do echo -e "\n######### Compiling $p p
         dpkg -i ${p}_*_${PKG_ARCH}.deb
     fi
 done
+popd
 
 # Build PHD2
 if [ -z phd2_*_${PKG_ARCH}.deb ]; then echo "No PHD2 package found, building it"
