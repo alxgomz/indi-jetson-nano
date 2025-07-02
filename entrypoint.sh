@@ -28,6 +28,14 @@ build_xisf() {
     popd
 }
 
+build_phd2() {
+    pushd phd2
+    # Build with non-free camera sdk
+    sed -ie 's/ -DOPENSOURCE_ONLY=1/ -DOPENSOURCE_ONLY=0 -DFETCHCONTENT_FULLY_DISCONNECTED=OFF/' debian/rules
+    dpkg-buildpackage -d -b -uc
+    popd
+}
+
 build_indi() {
     pushd indi
     for i in ../patches/*.diff; do echo "Applying $i"
@@ -38,6 +46,7 @@ build_indi() {
     popd
 }
 
+# Build XISF
 if [ -z libxisf{,-dev}_*_${PKG_ARCH}.deb ]; then echo "No XISF package found, building it"
     build_xisf
 fi
@@ -52,6 +61,7 @@ dpkg -i libindi-dev_${INDI_VERSION#v*}_${PKG_ARCH}.deb \
     libindi-data_${INDI_VERSION#v*}_all.deb \
     indi-bin_${INDI_VERSION#v*}_${PKG_ARCH}.deb
 
+# Build INDI 3rd party drivers
 INDI_3RD_PARTY_DRIVERS="libplayerone libpktriggercord indi-playerone indi-pentax"
 
 pushd indi-3rdparty
@@ -62,3 +72,9 @@ for p in $(echo $INDI_3RD_PARTY_DRIVERS); do echo -e "\n######### Compiling $p p
         dpkg -i ${p}_*_${PKG_ARCH}.deb
     fi
 done
+
+# Build PHD2
+if [ -z phd2_*_${PKG_ARCH}.deb ]; then echo "No PHD2 package found, building it"
+    build_phd2
+fi
+dpkg -i phd2_*_${PKG_ARCH}.deb
