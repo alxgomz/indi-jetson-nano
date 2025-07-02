@@ -10,3 +10,7 @@
 	path = libXISF
 	url = https://gitea.nouspiro.space/nou/libXISF.git
 	branch = ubuntu
+[submodule "phd2"]
+	path = phd2
+	url = https://github.com/OpenPHDGuiding/phd2.git
+	branch = a80b39bd1356e33e46d2e53eb77c1bb56d54ad00
