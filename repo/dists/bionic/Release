@@ -1,17 +1,17 @@
 Codename: bionic
-Date: Wed, 02 Jul 2025 22:03:53 UTC
+Date: Sat, 05 Jul 2025 21:28:58 UTC
 Architectures: arm64
 Components: main
 Description: alxgomz/indi-jetson-nano
 MD5Sum:
- d41d8cd98f00b204e9800998ecf8427e 0 main/binary-arm64/Packages
- 7029066c27ac6f5ef18d660d5741979a 20 main/binary-arm64/Packages.gz
+ 1e403a97b8a7b362292bb37e4ece1933 20097 main/binary-arm64/Packages
+ 5a0c5d8ea223b972b8c5fe3cdb687981 8150 main/binary-arm64/Packages.gz
  8b6273e0149e4efb6633bb000ce82309 74 main/binary-arm64/Release
 SHA1:
- da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-arm64/Packages
- 46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-arm64/Packages.gz
+ f40417e2696d86e8676eb03cb72821ec34f4d18a 20097 main/binary-arm64/Packages
+ ef968949e94663005eb7f88e25f5b49e49787ae5 8150 main/binary-arm64/Packages.gz
  2075ec648c5613edb53b9b5b2ee81dc32ac5d67c 74 main/binary-arm64/Release
 SHA256:
- e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-arm64/Packages
- 59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-arm64/Packages.gz
+ 652e6c62b8f2e435a61c3051ff7f4b33084dea2a35ce62de6ae58d774f067029 20097 main/binary-arm64/Packages
+ 641e9e1849e0900fde41dc08e4e5296218f1465e24767ea1158d697f99b019a0 8150 main/binary-arm64/Packages.gz
  2d9280dc69facccfa3cb4afdd2ff343823654aa30c3f80caef8624c68ab0927e 74 main/binary-arm64/Release
