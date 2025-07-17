@@ -19,7 +19,7 @@ jobs:
 
       - name: Build packages on Ubuntu 18.04 ARM64 image
         run: >
-          docker run --rm -v $PWD:/usr/src/ alxgomz/indi-builder:2.1.3
+          docker run --rm -v $PWD:/usr/src/ alxgomz/indi-builder:2.2.0
 
       - name: Get APT repo public key
         id: apt_pub_key
