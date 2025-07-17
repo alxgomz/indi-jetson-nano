@@ -31,7 +31,11 @@ build_xisf() {
 build_phd2() {
     pushd phd2
     # Build with non-free camera sdk
-    sed -ie 's/ -DOPENSOURCE_ONLY=1/ -DOPENSOURCE_ONLY=0 -DFETCHCONTENT_FULLY_DISCONNECTED=OFF/' debian/rules
+    sed -i \
+      -e 's/ -DUSE_SYSTEM_GTEST=1/ -DUSE_SYSTEM_GTEST=0/' \
+      -e 's/ -DOPENSOURCE_ONLY=1/ -DOPENSOURCE_ONLY=0 -DFETCHCONTENT_FULLY_DISCONNECTED=OFF/' \
+      debian/rules
+      curl -sLk https://github.com/indilib/indi-3rdparty/raw/refs/tags/v2.1.4/libtoupcam/arm64/libtoupcam.bin > cameras/toupcam/linux/arm64/libtoupcam.so
     dpkg-buildpackage -d -b -uc
     popd
 }
