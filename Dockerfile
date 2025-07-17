@@ -1,8 +1,6 @@
 FROM --platform=linux/arm64 ubuntu:18.04
 ARG DEBIAN_FRONTEND=noninteractive
 
-ARG INDI_VERSION=master
-
 RUN apt-get -y update && \
     apt-get -y install git \
         gcc-8 \
@@ -41,14 +39,11 @@ RUN apt-get -y install dpkg-dev \
         wx3.0-i18n \
         libopencv-dev \
         libeigen3-dev \
-        libgtest-dev \
         libx11-dev
 
 ADD entrypoint.sh /usr/local/bin/entrypoint.sh
+ADD http://launchpadlibrarian.net/477116565/libev-dev_4.33-1_arm64.deb http://launchpadlibrarian.net/477116569/libev4_4.33-1_arm64.deb /libev
 
-RUN --mount=source=libev,type=bind,target=/libev \
-    dpkg -i /libev/*.deb
-
-ENV INDI_VERSION=${INDI_VERSION}
+RUN dpkg -i /libev/*.deb
 
 CMD ["/bin/bash", "-x", "/usr/local/bin/entrypoint.sh" ]
