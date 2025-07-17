@@ -9,9 +9,9 @@ on:
       - .github/workflows/docker-build.yml
 
 env:
-  INDI_VERSION: 2.1.4
   DOCKER_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
   DOCKER_IMAGE: indi-builder
+  DOCKER_TAG: 2.2.0
 
 jobs:
   build:
@@ -33,4 +33,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ env.INDI_VERSION }}
+          tags: ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
