@@ -42,7 +42,7 @@ RUN apt-get -y install dpkg-dev \
         libx11-dev
 
 ADD entrypoint.sh /usr/local/bin/entrypoint.sh
-ADD http://launchpadlibrarian.net/477116565/libev-dev_4.33-1_arm64.deb http://launchpadlibrarian.net/477116569/libev4_4.33-1_arm64.deb /libev
+ADD http://launchpadlibrarian.net/477116565/libev-dev_4.33-1_arm64.deb http://launchpadlibrarian.net/477116569/libev4_4.33-1_arm64.deb /libev/
 
 RUN dpkg -i /libev/*.deb
 
