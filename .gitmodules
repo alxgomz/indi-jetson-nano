@@ -13,4 +13,4 @@
 [submodule "phd2"]
 	path = phd2
 	url = https://github.com/OpenPHDGuiding/phd2.git
-	branch = a80b39bd1356e33e46d2e53eb77c1bb56d54ad00
+	branch = affc907fb08f943265034b45995afed23a74e1ac
