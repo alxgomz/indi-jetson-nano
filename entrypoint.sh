@@ -2,8 +2,6 @@
 
 shopt -s nullglob
 
-VERSION=${INDI_VERSION:=master}
-
 ARCH=$(uname -m)
 case $ARCH in
     x86_64)
@@ -35,7 +33,7 @@ build_phd2() {
       -e 's/ -DUSE_SYSTEM_GTEST=1/ -DUSE_SYSTEM_GTEST=0/' \
       -e 's/ -DOPENSOURCE_ONLY=1/ -DOPENSOURCE_ONLY=0 -DFETCHCONTENT_FULLY_DISCONNECTED=OFF/' \
       debian/rules
-      curl -sLk https://github.com/indilib/indi-3rdparty/raw/refs/tags/v2.1.4/libtoupcam/arm64/libtoupcam.bin > cameras/toupcam/linux/arm64/libtoupcam.so
+      curl -sLk https://github.com/indilib/indi-3rdparty/raw/refs/tags/v${INDI_VERSION}/libtoupcam/arm64/libtoupcam.bin > cameras/toupcam/linux/arm64/libtoupcam.so
     dpkg-buildpackage -d -b -uc
     popd
 }
