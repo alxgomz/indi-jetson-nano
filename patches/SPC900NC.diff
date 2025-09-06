@@ -44,23 +44,6 @@ index cf5fe6b50..f7fcf99bf 100644
  bool V4L2_Driver::setManualExposure(double duration)
  {
      /* N.B. Check how this differs from one camera to another. This is just a proof of concept for now */
-@@ -1303,7 +1308,15 @@ bool V4L2_Driver::startlongexposure(double timeinsec)
- {
-     lxtimer = IEAddTimer((int)(timeinsec * 1000.0), (IE_TCF *)lxtimerCallback, this);
-     v4l_base->setlxstate(LX_ACCUMULATING);
--    return (lx->startLx());
-+    if (lx->startLx())
-+    {
-+        is_capturing = true;
-+        return true;
-+    }
-+    else
-+    {
-+        return false;
-+    }
- }
- 
- void V4L2_Driver::lxtimerCallback(void * userpointer)
 @@ -1537,7 +1550,7 @@ void V4L2_Driver::newFrame()
          return;
      }
