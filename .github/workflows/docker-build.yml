@@ -1,4 +1,4 @@
-name: INDI package builder for jetson Nano
+name: INDI Docker build env
 on:
   push:
     branches:
