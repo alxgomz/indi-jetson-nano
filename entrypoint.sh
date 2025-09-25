@@ -64,7 +64,7 @@ dpkg -i libindi-dev_${INDI_VERSION#v*}_${PKG_ARCH}.deb \
     indi-bin_${INDI_VERSION#v*}_${PKG_ARCH}.deb
 
 # Build INDI 3rd party drivers
-INDI_3RD_PARTY_DRIVERS="libplayerone libpktriggercord indi-playerone indi-pentax"
+INDI_3RD_PARTY_DRIVERS="libplayerone libpktriggercord libaltaircam indi-playerone indi-pentax indi-toupbase"
 
 pushd indi-3rdparty
 chmod +x debian/*/rules
