@@ -63,17 +63,17 @@ dpkg -i libindi-dev_${INDI_VERSION#v*}_${PKG_ARCH}.deb \
     libindi-data_${INDI_VERSION#v*}_all.deb \
     indi-bin_${INDI_VERSION#v*}_${PKG_ARCH}.deb
 
-# Build INDI 3rd party drivers
-INDI_3RD_PARTY_DRIVERS="libplayerone libpktriggercord libaltaircam indi-playerone indi-pentax indi-toupbase"
+# Build INDI 3rd party drivers from INDI_3RD_PARTY_DRIVERS environment variable
 
 pushd indi-3rdparty
 chmod +x debian/*/rules
-for p in $(echo $INDI_3RD_PARTY_DRIVERS); do echo -e "\n######### Compiling $p package #########\n"
+while read p; do echo -e "\n######### Compiling $p package #########\n"
     [ -d deb_$p ] || ./make_deb_pkgs $p
     if [[ "$p" =~ ^lib ]]; then echo "Installing compiled library $p as it may be required by subsequent packages"
         dpkg -i ${p}_*_${PKG_ARCH}.deb
     fi
-done
+done <<< "$INDI_3RD_PARTY_DRIVERS"
+
 popd
 
 # Build PHD2
