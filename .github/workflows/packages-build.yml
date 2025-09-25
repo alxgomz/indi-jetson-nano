@@ -20,8 +20,8 @@ jobs:
       - name: Build packages on Ubuntu 18.04 ARM64 image
         run: |
           docker run --rm \
-            -e INDI_VERSION=$(cat INDI_VERSION) \
-            -e INDI_3RD_PARTY_DRIVERS=$(cat INDI_3RD_PARTY_DRIVERS) \
+            -e INDI_VERSION="$(cat INDI_VERSION)" \
+            -e INDI_3RD_PARTY_DRIVERS="$(cat INDI_3RD_PARTY_DRIVERS)" \
             -v $PWD:/usr/src/ alxgomz/indi-builder:2.3.0
 
       - name: Get APT repo public key
