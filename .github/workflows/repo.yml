@@ -32,6 +32,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: debs
+      - name: Check if anything needs to be deployed
+        id: check_empty
+        run: |
+          PKG_FILE_SIZE=$(zcat -l repo/dists/bionic/main/binary-arm64/Packages.gz | awk '/\/Packages$/{print $2}')
+          echo "PKG_FILE_SIZE=$PKG_FILE_SIZE" >> $GITHUB_OUTPUT
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -39,5 +44,5 @@ jobs:
         with:
           path: 'repo'
       - name: Deploy to GitHub Pages
-        id: deployment
+        if: steps.check_empty.outputs.PKG_FILE_SIZE != '0'
         uses: actions/deploy-pages@v4
