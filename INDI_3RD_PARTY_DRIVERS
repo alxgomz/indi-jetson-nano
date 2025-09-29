@@ -1,6 +1,16 @@
 libplayerone
 libpktriggercord
 libaltaircam
+libtoupcam
+libbressercam
+libmallincam
+libmeadecam
+libnncam
+libogmacam
+libomegonprocam
+libstarshootg
+libtscam
+libsvbonycam
 indi-playerone
 indi-pentax
 indi-toupbase
