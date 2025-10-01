@@ -11,6 +11,8 @@ libomegonprocam
 libstarshootg
 libtscam
 libsvbonycam
+libqhy
+indi-qhy
 indi-playerone
 indi-pentax
 indi-toupbase
