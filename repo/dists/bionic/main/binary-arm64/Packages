@@ -382,6 +382,23 @@ SHA1: 30a7de64ee3ed460538a513f03f147f51b2f7ee5
 MD5sum: bdadcb4caa28bb819bd62b0fb6129467
 Description: Library for Player One Astronomy's Cameras
 
+Package: libqhy
+Version: 25.6.3
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 16956
+Depends: libc6 (>= 2.17), libgcc1 (>= 1:3.0), libstdc++6 (>= 5), libusb-1.0-0 (>= 2:1.0.16), fxload
+Conflicts: firmware-ccd
+Replaces: firmware-ccd
+Priority: extra
+Section: libs
+Filename: pool/main/libq/libqhy/libqhy_25.6.3_arm64.deb
+Size: 1122876
+SHA256: 90ed78ff7b4814ad939f64bb8a570c2575811422e396ec8a1131a5f2e483095c
+SHA1: 7c95fa84d89597b527cfce0073db90c33882dd48
+MD5sum: fc741f95971930e05b9b6b18031b3a4f
+Description: libqhy provide libraries to access and control QHY CCDs and Filter Wheels.
+
 Package: libstarshootg
 Version: 59.29176.20250806
 Architecture: arm64
