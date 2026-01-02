@@ -2,7 +2,7 @@
 Hash: SHA256
 
 Codename: bionic
-Date: Wed, 01 Oct 2025 06:55:09 UTC
+Date: Fri, 02 Jan 2026 20:03:14 UTC
 Architectures: arm64
 Components: main
 Description: alxgomz/indi-jetson-nano
@@ -20,8 +20,8 @@ SHA256:
  2d9280dc69facccfa3cb4afdd2ff343823654aa30c3f80caef8624c68ab0927e 74 main/binary-arm64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYIAB0WIQT9O+XMGLWKctkgIX31E57lZjdKawUCaNzQTgAKCRD1E57lZjdK
-a0XpAP9dXRmc/obQGAuCqxXBcYGSBbZ2dcMZfKE5JLULfyKQCwEAm2nXbY8UyNl+
-ec5wpJoAWiHlFV1uQpfaMI+k+cP/Hw0=
-=c7ga
+iHUEARYIAB0WIQT9O+XMGLWKctkgIX31E57lZjdKawUCaVgkggAKCRD1E57lZjdK
+ayrFAP0c6X7dDHW0ozPV8W90Haoo6CPhSCYO1kdZlOjbgXWDewD/b4U0cnHkG4hF
+Bo9MXfruVAE6IERkFB4G9kPa9u3nBAc=
+=p/NH
 -----END PGP SIGNATURE-----
