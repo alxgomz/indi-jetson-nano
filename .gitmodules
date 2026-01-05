@@ -1,11 +1,11 @@
 [submodule "indi"]
 	path = indi
 	url = https://github.com/indilib/indi.git
-	branch = v2.1.5
+	branch = v2.1.7
 [submodule "indi-3rdparty"]
 	path = indi-3rdparty
 	url = https://github.com/indilib/indi-3rdparty
-	branch = v2.1.5
+	branch = v2.1.7
 [submodule "libXISF"]
 	path = libXISF
 	url = https://gitea.nouspiro.space/nou/libXISF.git
@@ -13,4 +13,4 @@
 [submodule "phd2"]
 	path = phd2
 	url = https://github.com/OpenPHDGuiding/phd2.git
-	branch = affc907fb08f943265034b45995afed23a74e1ac
+	branch = v2.6.14
