@@ -4,8 +4,8 @@
 	branch = v2.1.7
 [submodule "indi-3rdparty"]
 	path = indi-3rdparty
-	url = https://github.com/indilib/indi-3rdparty
-	branch = v2.1.7
+	url = https://github.com/alxgomz/indi-3rdparty
+	branch = ubuntu-18.04
 [submodule "libXISF"]
 	path = libXISF
 	url = https://gitea.nouspiro.space/nou/libXISF.git
