@@ -1,3 +1,0 @@
-*.deb !text !filter !merge !diff
-*.db !text !filter !merge !diff
-*.gz !text !filter !merge !diff
