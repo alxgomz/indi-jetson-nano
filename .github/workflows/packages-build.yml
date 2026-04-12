@@ -20,9 +20,12 @@ jobs:
       - name: Build packages on Ubuntu 18.04 ARM64 image
         run: |
           docker run --rm \
+            -e DEB_BUILD_OPTIONS=noautodbgsym \
+            -e DEB_BUILD_PROFILES=noautodbgsym \
             -e INDI_VERSION="$(cat INDI_VERSION)" \
             -e INDI_3RD_PARTY_DRIVERS="$(cat INDI_3RD_PARTY_DRIVERS)" \
-            -v $PWD:/usr/src/ alxgomz/indi-builder:2.3.0
+            -v $PWD:/usr/src/ alxgomz/indi-builder:2.3.0 && \
+          find . -type f -name "*-dbg_*.deb" -delete
 
       - name: Get APT repo public key
         id: apt_pub_key
