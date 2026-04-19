@@ -1,8 +1,8 @@
 diff --git a/drivers/video/v4l2driver.cpp b/drivers/video/v4l2driver.cpp
-index cf5fe6b50..5e1e7a517 100644
+index cf5fe6b50..6c3a6adae 100644
 --- a/drivers/video/v4l2driver.cpp
 +++ b/drivers/video/v4l2driver.cpp
-@@ -941,11 +941,30 @@ bool V4L2_Driver::StartExposure(float duration)
+@@ -941,13 +941,39 @@ bool V4L2_Driver::StartExposure(float duration)
          }
      }
  
@@ -33,8 +33,17 @@ index cf5fe6b50..5e1e7a517 100644
 +
      if (lx->isEnabled())
      {
++        /* For LX exposures, set frame_duration to the full exposure duration.
++         * The LX timer will fire after this duration and start capturing;
++         * the first frame received is the completed exposure. */
++        frame_duration = exposure_duration;
++        frameCount    = 0;
++        subframeCount = 0;
++
          LOGF_INFO("Using long exposure mode for %.3f sec frame.", duration);
-@@ -963,14 +982,6 @@ bool V4L2_Driver::setShutter(double duration)
+         if (startlongexposure(duration))
+         {
+@@ -963,14 +989,6 @@ bool V4L2_Driver::setShutter(double duration)
      }
      else if (setManualExposure(duration))
      {
@@ -49,3 +58,30 @@ index cf5fe6b50..5e1e7a517 100644
          frameCount    = 0;
          subframeCount = 0;
  
+@@ -1320,8 +1338,11 @@ void V4L2_Driver::lxtimerCallback(void * userpointer)
+         p->v4l_base->setlxstate(LX_ACTIVE);
+     }
+     IERmTimer(p->lxtimer);
++    p->lxtimer = -1;
+     if (!p->v4l_base->isstreamactive())
+-        p->is_capturing = p->start_capturing(false); // jump to new/updateFrame
++        p->start_capturing(false); // jump to new/updateFrame
++    else
++        p->is_capturing = true; // stream already active, just flag that we're capturing
+ }
+ 
+ bool V4L2_Driver::UpdateCCDBin(int hor, int ver)
+@@ -1801,6 +1822,13 @@ bool V4L2_Driver::AbortExposure()
+     if (lx->isEnabled())
+     {
+         lx->stopLx();
++        if (lxtimer != -1)
++        {
++            IERmTimer(lxtimer);
++            lxtimer = -1;
++        }
++        if (!Streamer->isBusy())
++            stop_capturing();
+         return true;
+     }
+     else if (!Streamer->isBusy())
