@@ -1,7 +1,7 @@
 [submodule "indi"]
 	path = indi
 	url = https://github.com/indilib/indi.git
-	branch = v2.1.7
+	branch = v2.1.9
 [submodule "indi-3rdparty"]
 	path = indi-3rdparty
 	url = https://github.com/alxgomz/indi-3rdparty
