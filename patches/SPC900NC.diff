@@ -2,14 +2,6 @@ diff --git a/drivers/video/v4l2driver.cpp b/drivers/video/v4l2driver.cpp
 index cf5fe6b50..b1b96f820 100644
 --- a/drivers/video/v4l2driver.cpp
 +++ b/drivers/video/v4l2driver.cpp
-@@ -951,6 +951,7 @@ bool V4L2_Driver::setShutter(double duration)
-         LOGF_INFO("Using long exposure mode for %.3f sec frame.", duration);
-         if (startlongexposure(duration))
-         {
-+            gettimeofday(&capture_start, nullptr);
-             LOGF_INFO("Started %.3f-second long exposure.", duration);
-             return true;
-         }
 @@ -992,6 +993,11 @@ bool V4L2_Driver::isIOptron()
      return strstr(getDeviceName(), "iGuider") || strstr(getDeviceName(), "iPolar");
  }
