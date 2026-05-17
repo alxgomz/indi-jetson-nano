@@ -12,7 +12,7 @@ case $ARCH in
     ;;
     *)
         echo "Unknown architecture $ARCH. Aborting compilation."
-        ecit 1
+        exit 1
     ;;
 esac
 
