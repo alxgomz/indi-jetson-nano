@@ -1,49 +1,29 @@
 diff --git a/drivers/video/v4l2driver.cpp b/drivers/video/v4l2driver.cpp
-index cf5fe6b50..6c3a6adae 100644
+index cf5fe6b50..568c6e293 100644
 --- a/drivers/video/v4l2driver.cpp
 +++ b/drivers/video/v4l2driver.cpp
-@@ -941,13 +941,39 @@ bool V4L2_Driver::StartExposure(float duration)
-         }
-     }
+@@ -916,8 +916,7 @@ bool V4L2_Driver::StartExposure(float duration)
+         V4LFrame->expose = duration;
+         PrimaryCCD.setExposureDuration(duration);
  
--    return is_capturing;
-+    /* For LX modes other than SERIAL (e.g. LED), capturing is deferred
-+     * until the LX timer fires (see lxtimerCallback), so is_capturing is
-+     * still false at this point. We must return true so that the base class
-+     * sets PrimaryCCD to IPS_BUSY, otherwise PrimaryCCD.isExposing() will
-+     * return false when the frame arrives and the driver will abort with
-+     * "frame received while not exposing". */
-+    return is_capturing || (lx->isEnabled() && lx->getLxmode() != LXSERIAL);
- }
+-        if (!lx->isEnabled() || lx->getLxmode() == LXSERIAL)
+-            start_capturing(false);
++        start_capturing(false);
  
- bool V4L2_Driver::setShutter(double duration)
- {
-+    /* Initialize exposure counters for all paths (LX and manual).
-+     * Previously these were only set in the manual exposure path,
-+     * leaving them uninitialized for LX exposures. This caused
-+     * getRemainingExposure() and frame timing logic in newFrame()
-+     * to operate on stale/garbage values during LX captures. */
-+    exposure_duration.tv_sec  = (long) duration;
-+    exposure_duration.tv_usec = (long) ((duration - (double) exposure_duration.tv_sec) * 1000000.0f);
-+
-+    elapsed_exposure.tv_sec = 0;
-+    elapsed_exposure.tv_usec = 0;
-+
-+    gettimeofday(&capture_start, nullptr);
-+
-     if (lx->isEnabled())
-     {
-+        /* For LX exposures, set frame_duration to the full exposure duration.
-+         * The LX timer will fire after this duration and start capturing;
-+         * the first frame received is the completed exposure. */
-+        frame_duration = exposure_duration;
-+        frameCount    = 0;
-+        subframeCount = 0;
-+
+         /* Update exposure duration in client */
+         /* FIXME: exposure update timer has period hardcoded 1 second */
+@@ -951,8 +950,9 @@ bool V4L2_Driver::setShutter(double duration)
          LOGF_INFO("Using long exposure mode for %.3f sec frame.", duration);
          if (startlongexposure(duration))
          {
-@@ -963,14 +989,6 @@ bool V4L2_Driver::setShutter(double duration)
++            frame_duration.tv_sec  = (long) duration;
++            frame_duration.tv_usec = (long) ((duration - (double) ((long) duration)) * 1000000.0f);
+             LOGF_INFO("Started %.3f-second long exposure.", duration);
+-            return true;
+         }
+         else
+         {
+@@ -963,21 +963,9 @@ bool V4L2_Driver::setShutter(double duration)
      }
      else if (setManualExposure(duration))
      {
@@ -55,31 +35,44 @@ index cf5fe6b50..6c3a6adae 100644
 -
 -        gettimeofday(&capture_start, nullptr);
 -
-         frameCount    = 0;
-         subframeCount = 0;
- 
-@@ -1320,8 +1338,11 @@ void V4L2_Driver::lxtimerCallback(void * userpointer)
-         p->v4l_base->setlxstate(LX_ACTIVE);
+-        frameCount    = 0;
+-        subframeCount = 0;
+-
+-        // Do not spam log for short exposures.
++        // frame_duration already set by setManualExposure()
+         if (duration >= 3)
+             LOGF_INFO("Started %.3f-second manual exposure.", duration);
+-        return true;
      }
-     IERmTimer(p->lxtimer);
-+    p->lxtimer = -1;
-     if (!p->v4l_base->isstreamactive())
--        p->is_capturing = p->start_capturing(false); // jump to new/updateFrame
-+        p->start_capturing(false); // jump to new/updateFrame
-+    else
-+        p->is_capturing = true; // stream already active, just flag that we're capturing
+     else
+     {
+@@ -985,6 +973,15 @@ bool V4L2_Driver::setShutter(double duration)
+                   duration);
+         return false;
+     }
++
++    exposure_duration.tv_sec  = (long) duration;
++    exposure_duration.tv_usec = (long) ((duration - (double) exposure_duration.tv_sec) * 1000000.0f);
++    elapsed_exposure.tv_sec   = 0;
++    elapsed_exposure.tv_usec  = 0;
++    gettimeofday(&capture_start, nullptr);
++    frameCount    = 0;
++    subframeCount = 0;
++    return true;
  }
  
- bool V4L2_Driver::UpdateCCDBin(int hor, int ver)
-@@ -1801,6 +1822,13 @@ bool V4L2_Driver::AbortExposure()
+ bool V4L2_Driver::isIOptron()
+@@ -1800,7 +1797,15 @@ bool V4L2_Driver::AbortExposure()
+ {
      if (lx->isEnabled())
      {
-         lx->stopLx();
 +        if (lxtimer != -1)
 +        {
 +            IERmTimer(lxtimer);
 +            lxtimer = -1;
 +        }
+         lx->stopLx();
++        v4l_base->setlxstate(LX_ACTIVE);
 +        if (!Streamer->isBusy())
 +            stop_capturing();
          return true;
