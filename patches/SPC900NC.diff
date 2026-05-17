@@ -1,18 +1,19 @@
 diff --git a/drivers/video/v4l2driver.cpp b/drivers/video/v4l2driver.cpp
-index cf5fe6b50..568c6e293 100644
+index cf5fe6b50..bd3a1db2b 100644
 --- a/drivers/video/v4l2driver.cpp
 +++ b/drivers/video/v4l2driver.cpp
-@@ -916,8 +916,7 @@ bool V4L2_Driver::StartExposure(float duration)
+@@ -916,7 +916,9 @@ bool V4L2_Driver::StartExposure(float duration)
          V4LFrame->expose = duration;
          PrimaryCCD.setExposureDuration(duration);
  
 -        if (!lx->isEnabled() || lx->getLxmode() == LXSERIAL)
--            start_capturing(false);
-+        start_capturing(false);
++        if (lx->isEnabled() && lx->getLxmode() != LXSERIAL)
++            is_capturing = true;  // Don't start V4L2 stream yet - CCD must stay undisturbed during LED long exposure
++        else
+             start_capturing(false);
  
          /* Update exposure duration in client */
-         /* FIXME: exposure update timer has period hardcoded 1 second */
-@@ -951,8 +950,9 @@ bool V4L2_Driver::setShutter(double duration)
+@@ -951,8 +953,9 @@ bool V4L2_Driver::setShutter(double duration)
          LOGF_INFO("Using long exposure mode for %.3f sec frame.", duration);
          if (startlongexposure(duration))
          {
@@ -23,7 +24,7 @@ index cf5fe6b50..568c6e293 100644
          }
          else
          {
-@@ -963,21 +963,9 @@ bool V4L2_Driver::setShutter(double duration)
+@@ -963,21 +966,9 @@ bool V4L2_Driver::setShutter(double duration)
      }
      else if (setManualExposure(duration))
      {
@@ -46,7 +47,7 @@ index cf5fe6b50..568c6e293 100644
      }
      else
      {
-@@ -985,6 +973,15 @@ bool V4L2_Driver::setShutter(double duration)
+@@ -985,6 +976,15 @@ bool V4L2_Driver::setShutter(double duration)
                    duration);
          return false;
      }
@@ -62,7 +63,25 @@ index cf5fe6b50..568c6e293 100644
  }
  
  bool V4L2_Driver::isIOptron()
-@@ -1800,7 +1797,15 @@ bool V4L2_Driver::AbortExposure()
+@@ -1321,7 +1321,16 @@ void V4L2_Driver::lxtimerCallback(void * userpointer)
+     }
+     IERmTimer(p->lxtimer);
+     if (!p->v4l_base->isstreamactive())
+-        p->is_capturing = p->start_capturing(false); // jump to new/updateFrame
++    {
++        char errmsg[ERRMSGSIZ];
++        if (p->v4l_base->start_capturing(errmsg))
++        {
++            IDLog("V4L2 base failed starting capture after long exposure (%s)\n", errmsg);
++            p->is_capturing = false;
++            return;
++        }
++        p->v4l_capture_started = true;
++    }
+ }
+ 
+ bool V4L2_Driver::UpdateCCDBin(int hor, int ver)
+@@ -1800,7 +1809,15 @@ bool V4L2_Driver::AbortExposure()
  {
      if (lx->isEnabled())
      {
