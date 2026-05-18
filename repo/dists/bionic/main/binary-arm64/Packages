@@ -1,0 +1,456 @@
+Package: indi-bin
+Source: libindi
+Version: 2.1.9
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 19437
+Depends: libc6 (>= 2.27), libcfitsio5 (>= 3.390~), libcurl3-gnutls (>= 7.16.2), libev4 (>= 1:4.04), libgcc1 (>= 1:4.2), libindi1, libnova-0.16-0, librtlsdr0, libstdc++6 (>= 7), libusb-1.0-0 (>= 2:1.0.9), zlib1g (>= 1:1.1.4), libindi-data (>= 2.1.9)
+Conflicts: indi-astrolink4, indi-astromechfoc, indi-dreamfocuser, indi-spectracyber
+Replaces: indi-astrolink4, indi-astromechfoc, indi-dreamfocuser, indi-spectracyber
+Homepage: http://www.indilib.org/
+Priority: optional
+Section: misc
+Filename: pool/main/libi/libindi/indi-bin_2.1.9_arm64.deb
+Size: 2740580
+SHA256: 113d5969071f43caa9226719534208560ac29f2286efbc1b2d046256b9d27527
+SHA1: f5b4952305589a2b09211c43958d5328d34c1800
+MD5sum: 304f5202ededa39a1e8459323d6f20a5
+Description: INDI server, drivers and tools
+ INDI (Instrument-Neutral Device Interface) is a distributed XML-based
+ control protocol designed to operate astronomical instrumentation.
+ INDI is small, flexible, easy to parse, scalable, and stateless.
+ It supports common DCS functions such as remote control, data acquisition,
+ monitoring, and a lot more.
+ .
+ This package contains the INDI server, the drivers for the supported
+ astronomical instrumentation, and other INDI tools.
+
+Package: indi-pentax
+Version: 1.1
+Architecture: arm64
+Maintainer: Karl Rees <indidev@karlrees.com>
+Installed-Size: 241
+Depends: libc6 (>= 2.17), libcfitsio5 (>= 3.390~), libgcc1 (>= 1:3.0), libindi1, libjpeg8 (>= 8c), libpktriggercord, libraw16 (>= 0.16.0), libstdc++6 (>= 7)
+Priority: extra
+Section: science
+Filename: pool/main/i/indi-pentax/indi-pentax_1.1_arm64.deb
+Size: 71364
+SHA256: 1e8157793c175032e1f6726fa254a84abd1638db61fce3128803403b50c8f8e4
+SHA1: 0ac1150060b0149910e4114c3940ccb7e75d05b2
+MD5sum: c38e2b958176378833fa1402d305b9dc
+Description: INDI Pentax driver.
+ Driver for Pentax DSLR cameras.
+ .
+ This driver is compatible with any INDI client such as KStars or Xephem.
+
+Package: indi-playerone
+Version: 1.22
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 307
+Depends: libc6 (>= 2.17), libgcc1 (>= 1:3.0), libindi1, libplayerone, libstdc++6 (>= 5)
+Priority: extra
+Section: science
+Filename: pool/main/i/indi-playerone/indi-playerone_1.22_arm64.deb
+Size: 70280
+SHA256: a16a803caab0197248581a29d1dc74ad42559ab398c7f784f9d2cbe4513a09f5
+SHA1: 5f501e9a99e8e51bcd221a52974b1e0bb4da87e1
+MD5sum: b0baf3cd91ad63278b62fc366c28fb91
+Description: INDI Driver for Playerone based cameras
+ Driver for Playerone based cameras.
+ .
+ This driver is compatible with any INDI client such as KStars or Xephem.
+
+Package: indi-qhy
+Version: 2.7
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 365
+Depends: libc6 (>= 2.17), libcfitsio5 (>= 3.390~), libgcc1 (>= 1:3.0), libindi1, libnova-0.16-0, libqhy, libstdc++6 (>= 6), libusb-1.0-0 (>= 2:1.0.8)
+Priority: extra
+Section: science
+Filename: pool/main/i/indi-qhy/indi-qhy_2.7_arm64.deb
+Size: 105224
+SHA256: 2d95daaac3aec39bd01c696336c89b16087b4249d092f4982e81560a004dbd26
+SHA1: 5d7ce211e6fa2735d1d6914635708145d9df629d
+MD5sum: 87a06b29a6e94e16bd263236245ce885
+Description: INDI QHY Driver. This driver is compatible with any INDI client such as KStars or Xephem.
+
+Package: indi-toupbase
+Version: 2.4
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 2233
+Depends: libc6 (>= 2.17), libgcc1 (>= 1:3.0), libindi1, libstdc++6 (>= 5), libtoupcam, libaltaircam, libbressercam, libogmacam, libsvbonycam, libtscam, libstarshootg, libnncam, libmallincam, libomegonprocam, libmeadecam
+Priority: extra
+Section: science
+Filename: pool/main/i/indi-toupbase/indi-toupbase_2.4_arm64.deb
+Size: 110964
+SHA256: b58f01d2bb7961b3eb91c529747e48649520a6c4212d03208b88f87d562fabcd
+SHA1: 1c578b730c2253b682d92f6dc334ea70dab277c0
+MD5sum: c6d535759223374533655b3c1001f391
+Description: INDI Driver for Touptek based cameras
+ Driver for Touptek based cameras.
+ .
+ This driver is compatible with any INDI client such as KStars or Xephem.
+
+Package: libaltaircam
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 7819
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/liba/libaltaircam/libaltaircam_59.30594.20260120_arm64.deb
+Size: 1095308
+SHA256: 25daedb2afed86c9490b321acffd49e2e8763c31ec721fae14f7c54ae47bd9cd
+SHA1: be863d5c4446920ad29a4c2ff0caaeb464373f09
+MD5sum: c933ed16a0868d8ca3ba2e28da93807b
+Description: Library for Altair Astro Cameras.
+
+Package: libbressercam
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 5183
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libb/libbressercam/libbressercam_59.30594.20260120_arm64.deb
+Size: 1165196
+SHA256: 287642db1b022e9b7fba4bd20fe02e2825ead2d2bc742c16c574aa22d27cd06c
+SHA1: 50d28ceb0820936be5896e06cb49b4dccfb9eaa9
+MD5sum: 8b9a84bce7f16941cc78e4643bbe2126
+Description: Library for Bresser Cameras.
+
+Package: libindi-data
+Source: libindi
+Version: 2.1.9
+Architecture: all
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 73
+Multi-Arch: foreign
+Homepage: http://www.indilib.org/
+Priority: optional
+Section: misc
+Filename: pool/main/libi/libindi/libindi-data_2.1.9_all.deb
+Size: 12772
+SHA256: 195da6e7c38812a2c7606646703b101a848c95ef6ae6a64707d666e3e32cb603
+SHA1: 79fd9906c7672b5b03e61d9565b64a284301ec41
+MD5sum: b70ea50659dd2323416c1f59cc2b2c4d
+Description: Instrument-Neutral Device Interface library -- shared data
+ INDI (Instrument-Neutral Device Interface) is a distributed XML-based
+ control protocol designed to operate astronomical instrumentation.
+ INDI is small, flexible, easy to parse, scalable, and stateless.
+ It supports common DCS functions such as remote control, data acquisition,
+ monitoring, and a lot more.
+ .
+ This package contains the data files for the INDI library.
+
+Package: libindi-dev
+Source: libindi
+Version: 2.1.9
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 9987
+Depends: libindi1 (= 2.1.9), libusb-1.0-0-dev
+Homepage: http://www.indilib.org/
+Priority: optional
+Section: libdevel
+Filename: pool/main/libi/libindi/libindi-dev_2.1.9_arm64.deb
+Size: 1000276
+SHA256: 2aa3a7fd4fdcba24259090798c0f80339abd64c67bf5100c6c3e978eb44c1065
+SHA1: 174550239890bae0fcddf284339edf0cc59eff25
+MD5sum: 46853073d0c2b148b8dcf9dbab63103d
+Description: Instrument-Neutral Device Interface library -- development files
+ INDI (Instrument-Neutral Device Interface) is a distributed XML-based
+ control protocol designed to operate astronomical instrumentation.
+ INDI is small, flexible, easy to parse, scalable, and stateless.
+ It supports common DCS functions such as remote control, data acquisition,
+ monitoring, and a lot more.
+ .
+ This package contains development headers and libraries for the INDI library.
+
+Package: libindi1
+Source: libindi
+Version: 2.1.9
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 3208
+Depends: libc6 (>= 2.27), libcfitsio5 (>= 3.390~), libcurl3-gnutls (>= 7.16.2), libfftw3-double3 (>= 3.3.5), libgcc1 (>= 1:3.0), libgsl23, libgslcblas0, libjpeg8 (>= 8c), libnova-0.16-0, libogg0 (>= 1.0rc3), libstdc++6 (>= 6), libtheora0 (>= 1.0), libusb-1.0-0 (>= 2:1.0.9), libxisf, zlib1g (>= 1:1.1.4), libindi-data (>= 2.1.9), indi-bin (>= 2.1.9)
+Conflicts: libindi-plugins, libindi0, libindialignmentdriver1, libindidriver1
+Replaces: libindi-plugins, libindi0, libindialignmentdriver1, libindidriver1
+Multi-Arch: same
+Homepage: http://www.indilib.org/
+Priority: optional
+Section: libs
+Filename: pool/main/libi/libindi/libindi1_2.1.9_arm64.deb
+Size: 678936
+SHA256: 45e6721c579a1ea77c25f747a05def303435a9d81b89ab9fe60b44da25aff29f
+SHA1: 6ed8b9c4d8c44298580385460583625ddc466e45
+MD5sum: 7d6ca6ca0f5e141b49b49101b213592f
+Description: Instrument-Neutral Device Interface library -- shared library
+ INDI (Instrument-Neutral Device Interface) is a distributed XML-based
+ control protocol designed to operate astronomical instrumentation.
+ INDI is small, flexible, easy to parse, scalable, and stateless.
+ It supports common DCS functions such as remote control, data acquisition,
+ monitoring, and a lot more.
+ .
+ This package contains the shared library.
+
+Package: libmallincam
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 5491
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libm/libmallincam/libmallincam_59.30594.20260120_arm64.deb
+Size: 938408
+SHA256: fa4c2e06bff9bd7d4068caa9e5b7a85770f4e535894ed0ba31f5b3ebf2990726
+SHA1: bfd07fe1cf7e0cd73b9ed06faa7ca58d468e9c03
+MD5sum: af8ac406ec8f19867336f51cea9e95ce
+Description: Library for Mallincam Cameras.
+
+Package: libmeadecam
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Ben Gilsrud <bgilsrud@gmail.com>
+Installed-Size: 4282
+Depends: libc6 (>= 2.17), libtoupcam
+Priority: extra
+Section: libs
+Filename: pool/main/libm/libmeadecam/libmeadecam_59.30594.20260120_arm64.deb
+Size: 1094100
+SHA256: eca4580b7abe289dd9cc0cc9d4af74616df9f120949984b4f8038e6b18c21f16
+SHA1: 5ccf41ff5617b83f5ecec799208289d45bf17f82
+MD5sum: 375d85487f9af53bbd4af5e7a5a1f2e8
+Description: Library for Meade Touptek Cameras.
+
+Package: libnncam
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 44069
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libn/libnncam/libnncam_59.30594.20260120_arm64.deb
+Size: 3716388
+SHA256: 1c69296cc2916bbb1395637c2e78e680700136e6defd195de271af45466118f4
+SHA1: f3fa6fde6eaeb6a321886ce24f79ad7e1dfa31d9
+MD5sum: c18be9d8f6b0962064546507564f2ded
+Description: Library for Nn Cameras.
+
+Package: libogmacam
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 3284
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libo/libogmacam/libogmacam_59.30594.20260120_arm64.deb
+Size: 781608
+SHA256: a62f814c054f64a559ab8a89906e2bcc195891f54fb2d7de3e19ad110ed0aa91
+SHA1: 4bc99ca3d16c426da754176a37d1da2db6ffb915
+MD5sum: d123e5924578e260e778dd24f6c9cea6
+Description: Library for OGMAVision Cameras.
+
+Package: libomegonprocam
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 5463
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libo/libomegonprocam/libomegonprocam_59.30594.20260120_arm64.deb
+Size: 932476
+SHA256: 4c9a5622f3c65dcdba3584a0b79630b07fa3d3ca4bd09b00f1451ca894d24718
+SHA1: 9afc1468bcddd626f29f1196c80d30a683bc476d
+MD5sum: 29d5d5f08eb624cb4cf96bad30ea854f
+Description: Library for Omegon Pro Cameras.
+
+Package: libpktriggercord
+Version: 0.85.02
+Architecture: arm64
+Maintainer: Karl Rees <indidev@karlrees.com>
+Installed-Size: 230
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libp/libpktriggercord/libpktriggercord_0.85.02_arm64.deb
+Size: 46428
+SHA256: c8346d36a53db92ed476ff54d02ced8a8e9383363d10e1cf5ca61773a4819915
+SHA1: 3a2db4f7730843684fb525b3cd023cb0b19aeaf0
+MD5sum: 8bff38b63917ec7fa75850f8220a4e6e
+Description: Library for Pentax cameras in MSC mode.
+ Uses pktrigercord - see http://pktriggercord.melda.info/.
+
+Package: libplayerone
+Version: 1.18
+Architecture: arm64
+Maintainer: Hiroshi SAITO <hiro3110g@gmail.com>
+Installed-Size: 602
+Depends: libc6 (>= 2.27), libgcc1 (>= 1:3.0), libstdc++6 (>= 6), libudev1 (>= 183), libusb-1.0-0 (>= 2:1.0.16)
+Priority: extra
+Section: libs
+Filename: pool/main/libp/libplayerone/libplayerone_1.18_arm64.deb
+Size: 159124
+SHA256: 6d5f9274854ddd69343f79b6f47b1735f6679991300ddb072ce2bc85e38ec7bd
+SHA1: 93c14ea685cad2feb3d5e7d3a6213a9bc2df222e
+MD5sum: 05988a135fc76252aa32c9e3279fb39d
+Description: Library for Player One Astronomy's Cameras
+
+Package: libqhy
+Version: 26.2.1
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 17487
+Depends: libc6 (>= 2.17), libgcc1 (>= 1:3.0), libstdc++6 (>= 5), libusb-1.0-0 (>= 2:1.0.16), fxload
+Conflicts: firmware-ccd
+Replaces: firmware-ccd
+Priority: extra
+Section: libs
+Filename: pool/main/libq/libqhy/libqhy_26.2.1_arm64.deb
+Size: 1166524
+SHA256: cee48d6c8d8cb5bbe0bfa896846dd0d3ccd0102d884f35b689488769e8c0acd6
+SHA1: c32c8402dbb6dc0c280bbbd52efbe0c8ba772cda
+MD5sum: a79603f12f5c0b5304df651f1eaa45e1
+Description: libqhy provide libraries to access and control QHY CCDs and Filter Wheels.
+
+Package: libstarshootg
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 3725
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libs/libstarshootg/libstarshootg_59.30594.20260120_arm64.deb
+Size: 816356
+SHA256: 83fc036e27d7a5b56ae5ca29cc9a69c57e6de8276aa557e69e86c71f12ffeae2
+SHA1: 9defed98df4e8b371945b82a79a37cf1a8958edf
+MD5sum: 63867e83017b9813ca03b77f50259071
+Description: Library for Orion Starshoot G Cameras.
+
+Package: libsvbonycam
+Version: 57.27591.20250122
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 3046
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libs/libsvbonycam/libsvbonycam_57.27591.20250122_arm64.deb
+Size: 818596
+SHA256: c0e95e3f598318bdf774b6f89a521929076ce806e6a0b9aa3d049ec12de279c1
+SHA1: 139e4962fe4d82c902f0e994c0c161bbf426127d
+MD5sum: 169efb53c10ae7d0056f2b2c6d86e2e9
+Description: Library for SVBONY Cameras.
+
+Package: libtoupcam
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 44071
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libt/libtoupcam/libtoupcam_59.30594.20260120_arm64.deb
+Size: 3729240
+SHA256: bc4bcff2ace9997bc2876b23291c59f7565f66a3f79cfffe8e59858a3c5ba851
+SHA1: 5b350ebe4d7294f00fac4ca9b7248d5a543eaf26
+MD5sum: b431ca1231b0db1965f06f27b7ed5407
+Description: Library for Touptek Cameras.
+
+Package: libtscam
+Version: 59.30594.20260120
+Architecture: arm64
+Maintainer: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Installed-Size: 4042
+Depends: libc6 (>= 2.17)
+Priority: extra
+Section: libs
+Filename: pool/main/libt/libtscam/libtscam_59.30594.20260120_arm64.deb
+Size: 839752
+SHA256: a472e4cce41377a5a5efbb5ef43243e2752e8bbaf8560428857a516118f5e71d
+SHA1: cce7a740b90070152e7dbb54ab01ca7b83679602
+MD5sum: 5117f6b6b930afc56fa97a51621dbffe
+Description: Library for Teleskop Cameras.
+
+Package: libxisf
+Version: 0.2.12-ubuntu1
+Architecture: arm64
+Maintainer: Dušan Poizl <nou@nouspiro.space>
+Installed-Size: 724
+Depends: libc6 (>= 2.17), libgcc1 (>= 1:4.2), libstdc++6 (>= 5.2)
+Conflicts: libxisf0
+Multi-Arch: same
+Homepage: https://gitea.nouspiro.space/nou/libXISF
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxisf/libxisf_0.2.12-ubuntu1_arm64.deb
+Size: 239168
+SHA256: 55371a85ee26e62486ad4ccb07851a1e22949bde8edd4df0ef0f2a07fa2f326c
+SHA1: 912f14e4111886d5389fff2476a46106576c09da
+MD5sum: 72c8b8d91af164ea4e0d8e579d8e98ce
+Description: Library to load and save XISF images
+ XISF is native format of PixInsight astroprocessing suite.
+ Extensible Image Serialization Format (XISF) is the native file format
+ of PixInsight. It is a free, open format for storage, management and
+ interchange of digital images and associated data.
+ .
+ This C++ library implements XISF specification 1.0 which can be found at
+ https://pixinsight.com/doc/docs/XISF-1.0-spec/XISF-1.0-spec.html
+
+Package: libxisf-dev
+Source: libxisf
+Version: 0.2.12-ubuntu1
+Architecture: arm64
+Maintainer: Dušan Poizl <nou@nouspiro.space>
+Installed-Size: 32
+Depends: libxisf (= 0.2.12-ubuntu1)
+Multi-Arch: same
+Homepage: https://gitea.nouspiro.space/nou/libXISF
+Priority: optional
+Section: libdevel
+Filename: pool/main/libx/libxisf/libxisf-dev_0.2.12-ubuntu1_arm64.deb
+Size: 7596
+SHA256: aaa044e53df49385b97062c5592e1a35cc51fa4bcb99dc296bcf1d1e8693c63f
+SHA1: 7ae9050c49d418fc0cc8ca6e2041a38cc26ab134
+MD5sum: 3d5b5b2b893159a5a565870bfca04661
+Description: Library to load and save XISF images development files
+ This package contain development files.
+ .
+ XISF is native format of PixInsight astroprocessing suite.
+ Extensible Image Serialization Format (XISF) is the native file format
+ of PixInsight. It is a free, open format for storage, management and
+ interchange of digital images and associated data.
+ .
+ This C++ library implements XISF specification 1.0 which can be found at
+ https://pixinsight.com/doc/docs/XISF-1.0-spec/XISF-1.0-spec.html
+
+Package: phd2
+Version: 2.6.14
+Architecture: arm64
+Maintainer: Patrick Chevalley <pch@ap-i.net>
+Installed-Size: 90467
+Depends: libc6 (>= 2.27), libcfitsio5 (>= 3.390~), libcurl3-gnutls (>= 7.16.2), libgcc1 (>= 1:4.0), libindi1, libnova-0.16-0, libopencv-core3.2, libopencv-imgproc3.2, libopencv-videoio3.2, libplayerone, libstdc++6 (>= 6), libusb-1.0-0 (>= 2:1.0.16), libwxbase3.0-0v5 (>= 3.0.4+dfsg), libwxgtk3.0-0v5 (>= 3.0.4+dfsg), libx11-6
+Suggests: indi-bin
+Homepage: http://openphdguiding.org/
+Priority: optional
+Section: education
+Filename: pool/main/p/phd2/phd2_2.6.14_arm64.deb
+Size: 26791428
+SHA256: 8e3ff918ffacbe3beef7e9590974cdd84177949884131ce2dd101f6c365cecca
+SHA1: 4202010f14669c6709c436d99a9fd3d720387a88
+MD5sum: 39418324af914c6881db9b1c05bb8ea6
+Description: PHD Guiding, auto-guiding of your telescope
+ PHD Guiding is designed to be "Push Here Dummy" simple, yet provide powerful,
+ intelligent auto-guiding of your telescope.
+ Connect your mount, your camera, select a star, and start guiding. That's it!
+
