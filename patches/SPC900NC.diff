@@ -1,8 +1,8 @@
 diff --git a/drivers/video/v4l2driver.cpp b/drivers/video/v4l2driver.cpp
-index cf5fe6b50..4f01dc30e 100644
+index cf5fe6b50..bea0cdfd3 100644
 --- a/drivers/video/v4l2driver.cpp
 +++ b/drivers/video/v4l2driver.cpp
-@@ -916,6 +916,8 @@ bool V4L2_Driver::StartExposure(float duration)
+@@ -916,8 +916,12 @@ bool V4L2_Driver::StartExposure(float duration)
          V4LFrame->expose = duration;
          PrimaryCCD.setExposureDuration(duration);
  
@@ -10,8 +10,12 @@ index cf5fe6b50..4f01dc30e 100644
 +        // inactive during accumulation. lxtimerCallback will start it after stop_strobe.
          if (!lx->isEnabled() || lx->getLxmode() == LXSERIAL)
              start_capturing(false);
++        else
++            is_capturing = true;  // Mark as capturing so StartExposure returns true
  
-@@ -951,8 +953,9 @@ bool V4L2_Driver::setShutter(double duration)
+         /* Update exposure duration in client */
+         /* FIXME: exposure update timer has period hardcoded 1 second */
+@@ -951,8 +955,9 @@ bool V4L2_Driver::setShutter(double duration)
          LOGF_INFO("Using long exposure mode for %.3f sec frame.", duration);
          if (startlongexposure(duration))
          {
@@ -22,7 +26,7 @@ index cf5fe6b50..4f01dc30e 100644
          }
          else
          {
-@@ -963,21 +966,9 @@ bool V4L2_Driver::setShutter(double duration)
+@@ -963,21 +968,9 @@ bool V4L2_Driver::setShutter(double duration)
      }
      else if (setManualExposure(duration))
      {
@@ -45,7 +49,7 @@ index cf5fe6b50..4f01dc30e 100644
      }
      else
      {
-@@ -985,6 +976,15 @@ bool V4L2_Driver::setShutter(double duration)
+@@ -985,6 +978,15 @@ bool V4L2_Driver::setShutter(double duration)
                    duration);
          return false;
      }
@@ -61,7 +65,7 @@ index cf5fe6b50..4f01dc30e 100644
  }
  
  bool V4L2_Driver::isIOptron()
-@@ -1311,14 +1311,13 @@ void V4L2_Driver::lxtimerCallback(void * userpointer)
+@@ -1311,14 +1313,13 @@ void V4L2_Driver::lxtimerCallback(void * userpointer)
      auto p = static_cast<V4L2_Driver *>(userpointer);
  
      p->lx->stopLx();
@@ -82,7 +86,7 @@ index cf5fe6b50..4f01dc30e 100644
      IERmTimer(p->lxtimer);
      if (!p->v4l_base->isstreamactive())
          p->is_capturing = p->start_capturing(false); // jump to new/updateFrame
-@@ -1800,7 +1799,15 @@ bool V4L2_Driver::AbortExposure()
+@@ -1800,7 +1801,15 @@ bool V4L2_Driver::AbortExposure()
  {
      if (lx->isEnabled())
      {
