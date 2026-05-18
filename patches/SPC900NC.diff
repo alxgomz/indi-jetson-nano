@@ -1,5 +1,5 @@
 diff --git a/drivers/video/v4l2driver.cpp b/drivers/video/v4l2driver.cpp
-index cf5fe6b50..08901312c 100644
+index cf5fe6b50..2cad7ed98 100644
 --- a/drivers/video/v4l2driver.cpp
 +++ b/drivers/video/v4l2driver.cpp
 @@ -916,8 +916,7 @@ bool V4L2_Driver::StartExposure(float duration)
@@ -62,7 +62,7 @@ index cf5fe6b50..08901312c 100644
  }
  
  bool V4L2_Driver::isIOptron()
-@@ -1311,14 +1308,7 @@ void V4L2_Driver::lxtimerCallback(void * userpointer)
+@@ -1311,14 +1308,13 @@ void V4L2_Driver::lxtimerCallback(void * userpointer)
      auto p = static_cast<V4L2_Driver *>(userpointer);
  
      p->lx->stopLx();
@@ -72,13 +72,18 @@ index cf5fe6b50..08901312c 100644
 -    }
 -    else
 -    {
--        p->v4l_base->setlxstate(LX_ACTIVE);
++    // For LXLED mode, the first frame after stop_strobe IS the long-exposure frame
++    // (the CCD was blocked during accumulation, no residual frame to skip).
++    // For LXSERIAL mode, skip one residual frame before capturing.
++    if (p->lx->getLxmode() == LXLED)
+         p->v4l_base->setlxstate(LX_ACTIVE);
 -    }
-+    p->v4l_base->setlxstate(LX_TRIGGERED);
++    else
++        p->v4l_base->setlxstate(LX_TRIGGERED);
      IERmTimer(p->lxtimer);
      if (!p->v4l_base->isstreamactive())
          p->is_capturing = p->start_capturing(false); // jump to new/updateFrame
-@@ -1800,7 +1790,15 @@ bool V4L2_Driver::AbortExposure()
+@@ -1800,7 +1796,15 @@ bool V4L2_Driver::AbortExposure()
  {
      if (lx->isEnabled())
      {
